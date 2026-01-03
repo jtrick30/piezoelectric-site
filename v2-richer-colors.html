@@ -1,0 +1,1223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Piezoelectric | Jason Trickovic, MD</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300;1,9..40,400&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            /* Richer, more vibrant palette */
+            --color-bg: #FAFAF8;
+            --color-bg-warm: #F3F1EB;
+            --color-bg-accent: #E8EDE6;
+            --color-text: #1A1A1A;
+            --color-text-secondary: #4A4A4A;
+            
+            /* Deeper, richer greens */
+            --color-primary: #1B4D3E;
+            --color-primary-light: #2D6A4F;
+            --color-primary-pale: #D8E9E4;
+            
+            /* Warmer, more prominent gold */
+            --color-accent: #C9A227;
+            --color-accent-light: #E8D48A;
+            --color-accent-glow: rgba(201, 162, 39, 0.2);
+            
+            /* Warm coral secondary */
+            --color-secondary: #C17767;
+            --color-secondary-light: #E8C4BC;
+            
+            /* Gradients */
+            --gradient-hero: linear-gradient(135deg, rgba(27, 77, 62, 0.03) 0%, rgba(201, 162, 39, 0.05) 100%);
+            --gradient-accent: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
+            --gradient-gold: linear-gradient(135deg, var(--color-accent) 0%, #D4AF37 100%);
+            
+            --font-serif: 'Instrument Serif', Georgia, serif;
+            --font-sans: 'DM Sans', -apple-system, sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            background-color: var(--color-bg);
+            color: var(--color-text);
+            line-height: 1.6;
+            font-size: 17px;
+            font-weight: 300;
+            overflow-x: hidden;
+        }
+
+        /* Subtle grain texture overlay */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            opacity: 0.025;
+            z-index: 1000;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            padding: 1.25rem 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(250, 250, 248, 0.9);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(27, 77, 62, 0.08);
+        }
+
+        .logo {
+            font-family: var(--font-serif);
+            font-size: 1.4rem;
+            color: var(--color-text);
+            text-decoration: none;
+            letter-spacing: -0.02em;
+            display: flex;
+            align-items: center;
+            gap: 0.1em;
+        }
+
+        .logo-dot {
+            color: var(--color-accent);
+            font-size: 1.6rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-size: 0.9rem;
+            color: var(--color-text-secondary);
+            text-decoration: none;
+            letter-spacing: 0.02em;
+            transition: color 0.2s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gradient-gold);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--color-primary);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 8rem 3rem 4rem;
+            position: relative;
+            background: var(--gradient-hero);
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 60%;
+            height: 100%;
+            background: radial-gradient(ellipse at 70% 50%, rgba(201, 162, 39, 0.08) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-eyebrow {
+            font-size: 0.85rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--color-primary);
+            margin-bottom: 1.5rem;
+            font-weight: 400;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .hero-eyebrow::before {
+            content: '';
+            width: 40px;
+            height: 2px;
+            background: var(--gradient-gold);
+        }
+
+        .hero h1 {
+            font-family: var(--font-serif);
+            font-size: clamp(3rem, 7vw, 5.5rem);
+            font-weight: 400;
+            line-height: 1.08;
+            letter-spacing: -0.03em;
+            margin-bottom: 2rem;
+        }
+
+        .hero h1 .accent {
+            font-style: italic;
+            background: var(--gradient-accent);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-description {
+            font-size: 1.25rem;
+            line-height: 1.7;
+            color: var(--color-text-secondary);
+            max-width: 600px;
+            margin-bottom: 3rem;
+        }
+
+        .hero-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 0.95rem;
+            color: white;
+            text-decoration: none;
+            padding: 1rem 2rem;
+            background: var(--gradient-accent);
+            border: none;
+            border-radius: 3px;
+            transition: all 0.3s ease;
+            letter-spacing: 0.02em;
+            box-shadow: 0 4px 15px rgba(27, 77, 62, 0.2);
+        }
+
+        .hero-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(27, 77, 62, 0.3);
+        }
+
+        .hero-cta svg {
+            width: 16px;
+            height: 16px;
+            transition: transform 0.3s ease;
+        }
+
+        .hero-cta:hover svg {
+            transform: translateX(4px);
+        }
+
+        /* Piezoelectric visual element */
+        .piezo-visual {
+            position: absolute;
+            right: 8%;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 420px;
+            height: 420px;
+        }
+
+        .crystal {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+        .crystal-shape {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 180px;
+            height: 260px;
+            background: linear-gradient(
+                135deg,
+                rgba(27, 77, 62, 0.15) 0%,
+                rgba(45, 106, 79, 0.08) 40%,
+                rgba(201, 162, 39, 0.15) 100%
+            );
+            clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+            animation: crystalPulse 4s ease-in-out infinite;
+        }
+
+        .crystal-shape::before {
+            content: '';
+            position: absolute;
+            inset: 3px;
+            background: linear-gradient(
+                135deg,
+                rgba(250, 250, 248, 0.95) 0%,
+                rgba(250, 250, 248, 0.7) 100%
+            );
+            clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+        }
+
+        .crystal-shape::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 60px;
+            height: 60px;
+            background: radial-gradient(circle, var(--color-accent-glow) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: coreGlow 2s ease-in-out infinite;
+        }
+
+        .energy-ring {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            animation: energyExpand 3s ease-out infinite;
+        }
+
+        .energy-ring:nth-child(1) {
+            border: 2px solid rgba(201, 162, 39, 0.4);
+        }
+
+        .energy-ring:nth-child(2) {
+            border: 1.5px solid rgba(27, 77, 62, 0.3);
+            animation-delay: 1s;
+        }
+
+        .energy-ring:nth-child(3) {
+            border: 1px solid rgba(201, 162, 39, 0.25);
+            animation-delay: 2s;
+        }
+
+        @keyframes crystalPulse {
+            0%, 100% { transform: translate(-50%, -50%) scale(1); }
+            50% { transform: translate(-50%, -50%) scale(1.03); }
+        }
+
+        @keyframes coreGlow {
+            0%, 100% { opacity: 0.6; transform: translate(-50%, -50%) scale(1); }
+            50% { opacity: 1; transform: translate(-50%, -50%) scale(1.2); }
+        }
+
+        @keyframes energyExpand {
+            0% {
+                width: 180px;
+                height: 180px;
+                opacity: 0.6;
+            }
+            100% {
+                width: 400px;
+                height: 400px;
+                opacity: 0;
+            }
+        }
+
+        /* Section Styles */
+        section {
+            padding: 7rem 3rem;
+        }
+
+        .section-header {
+            margin-bottom: 4rem;
+        }
+
+        .section-eyebrow {
+            font-size: 0.8rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--color-primary);
+            margin-bottom: 1rem;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .section-eyebrow::before {
+            content: '';
+            width: 24px;
+            height: 2px;
+            background: var(--gradient-gold);
+        }
+
+        .section-title {
+            font-family: var(--font-serif);
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 400;
+            letter-spacing: -0.02em;
+        }
+
+        /* About Section */
+        .about {
+            background: var(--color-bg-warm);
+            position: relative;
+        }
+
+        .about::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--color-primary), var(--color-accent), var(--color-secondary));
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+            color: var(--color-text-secondary);
+        }
+
+        .about-text p:first-of-type::first-letter {
+            font-family: var(--font-serif);
+            font-size: 3.5rem;
+            float: left;
+            line-height: 1;
+            margin-right: 0.5rem;
+            margin-top: 0.1rem;
+            background: var(--gradient-accent);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .credentials-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .credentials-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            padding: 1.25rem 1.5rem;
+            background: var(--color-bg);
+            border-radius: 6px;
+            border-left: 4px solid transparent;
+            background-image: linear-gradient(var(--color-bg), var(--color-bg)), var(--gradient-accent);
+            background-origin: border-box;
+            background-clip: padding-box, border-box;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .credentials-list li:hover {
+            transform: translateX(4px);
+            box-shadow: 0 4px 20px rgba(27, 77, 62, 0.08);
+        }
+
+        .credential-icon {
+            width: 24px;
+            height: 24px;
+            color: var(--color-primary);
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .credential-content h4 {
+            font-weight: 500;
+            margin-bottom: 0.25rem;
+            font-size: 0.95rem;
+            color: var(--color-text);
+        }
+
+        .credential-content p {
+            font-size: 0.85rem;
+            color: var(--color-text-secondary);
+            margin: 0;
+        }
+
+        /* Projects Section */
+        .projects {
+            background: var(--color-bg);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .project-card {
+            background: var(--color-bg-warm);
+            padding: 2.5rem;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient-accent);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
+        }
+
+        .project-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .project-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 50px rgba(27, 77, 62, 0.1);
+        }
+
+        .project-tag {
+            display: inline-block;
+            font-size: 0.7rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            font-weight: 500;
+            padding: 0.4rem 0.9rem;
+            border-radius: 3px;
+            margin-bottom: 1.25rem;
+        }
+
+        .project-tag.research {
+            color: var(--color-primary);
+            background: var(--color-primary-pale);
+        }
+
+        .project-tag.implementation {
+            color: #8B5A2B;
+            background: #F5E6D3;
+        }
+
+        .project-tag.education {
+            color: var(--color-secondary);
+            background: var(--color-secondary-light);
+        }
+
+        .project-tag.innovation {
+            color: #6B5B95;
+            background: #E8E4F0;
+        }
+
+        .project-card h3 {
+            font-family: var(--font-serif);
+            font-size: 1.5rem;
+            font-weight: 400;
+            margin-bottom: 1rem;
+            letter-spacing: -0.01em;
+        }
+
+        .project-card p {
+            color: var(--color-text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.65;
+        }
+
+        .project-status {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.8rem;
+            color: var(--color-text-secondary);
+            font-style: italic;
+        }
+
+        .project-status::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background: var(--color-accent);
+            border-radius: 50%;
+            animation: statusPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes statusPulse {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+
+        .project-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+            color: var(--color-primary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: gap 0.2s ease;
+        }
+
+        .project-link svg {
+            width: 14px;
+            height: 14px;
+            transition: transform 0.2s ease;
+        }
+
+        .project-link:hover {
+            gap: 0.75rem;
+        }
+
+        .project-link:hover svg {
+            transform: translateX(2px);
+        }
+
+        /* Writing Section */
+        .writing {
+            background: linear-gradient(180deg, var(--color-bg-warm) 0%, var(--color-bg-accent) 100%);
+        }
+
+        .writing-list {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .writing-item {
+            display: grid;
+            grid-template-columns: 100px 1fr;
+            gap: 2rem;
+            padding: 2rem 0;
+            border-bottom: 1px solid rgba(27, 77, 62, 0.1);
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.3s ease;
+        }
+
+        .writing-item:hover {
+            padding-left: 1.5rem;
+            border-bottom-color: var(--color-accent);
+        }
+
+        .writing-date {
+            font-size: 0.85rem;
+            color: var(--color-text-secondary);
+            padding-top: 0.25rem;
+        }
+
+        .writing-content h3 {
+            font-family: var(--font-serif);
+            font-size: 1.35rem;
+            font-weight: 400;
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.01em;
+            transition: color 0.2s ease;
+        }
+
+        .writing-item:hover .writing-content h3 {
+            color: var(--color-primary);
+        }
+
+        .writing-content p {
+            color: var(--color-text-secondary);
+            font-size: 0.95rem;
+        }
+
+        /* Piezoelectric Concept Section */
+        .concept {
+            background: var(--color-primary);
+            color: var(--color-bg);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .concept::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(ellipse at 30% 50%, rgba(201, 162, 39, 0.15) 0%, transparent 50%),
+                        radial-gradient(ellipse at 70% 80%, rgba(45, 106, 79, 0.2) 0%, transparent 40%);
+            pointer-events: none;
+        }
+
+        .concept .section-eyebrow {
+            color: var(--color-accent);
+        }
+
+        .concept .section-eyebrow::before {
+            background: var(--color-accent);
+        }
+
+        .concept .section-title {
+            color: var(--color-bg);
+        }
+
+        .concept-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .concept-quote {
+            font-family: var(--font-serif);
+            font-size: clamp(1.5rem, 3vw, 2.25rem);
+            font-style: italic;
+            line-height: 1.5;
+            margin-bottom: 2rem;
+            color: rgba(250, 250, 248, 0.95);
+        }
+
+        .concept-quote .highlight {
+            color: var(--color-accent-light);
+        }
+
+        .concept-explanation {
+            color: rgba(250, 250, 248, 0.75);
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .concept-bg-text {
+            position: absolute;
+            font-family: var(--font-serif);
+            font-size: 18vw;
+            color: rgba(255,255,255,0.03);
+            top: 50%;
+            right: -5%;
+            transform: translateY(-50%);
+            white-space: nowrap;
+            pointer-events: none;
+        }
+
+        /* Contact Section */
+        .contact {
+            background: var(--color-bg);
+            text-align: center;
+            position: relative;
+        }
+
+        .contact::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 200px;
+            background: linear-gradient(180deg, transparent 0%, var(--color-bg-warm) 100%);
+            pointer-events: none;
+        }
+
+        .contact-content {
+            max-width: 600px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .contact-title {
+            font-family: var(--font-serif);
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 400;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-description {
+            color: var(--color-text-secondary);
+            margin-bottom: 2.5rem;
+            font-size: 1.1rem;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.25rem;
+            flex-wrap: wrap;
+        }
+
+        .contact-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding: 0.9rem 1.75rem;
+            text-decoration: none;
+            color: var(--color-text);
+            border: 1.5px solid var(--color-primary-pale);
+            border-radius: 4px;
+            font-size: 0.9rem;
+            transition: all 0.25s ease;
+            background: var(--color-bg);
+        }
+
+        .contact-link:hover {
+            border-color: var(--color-primary);
+            background: var(--color-primary);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(27, 77, 62, 0.2);
+        }
+
+        .contact-link svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        /* Footer */
+        footer {
+            padding: 2.5rem 3rem;
+            text-align: center;
+            font-size: 0.85rem;
+            color: var(--color-text-secondary);
+            background: var(--color-bg-warm);
+            border-top: 1px solid rgba(27, 77, 62, 0.08);
+        }
+
+        footer a {
+            color: var(--color-primary);
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive */
+        @media (max-width: 1100px) {
+            .piezo-visual {
+                width: 300px;
+                height: 300px;
+                right: 3%;
+            }
+
+            .crystal-shape {
+                width: 140px;
+                height: 200px;
+            }
+        }
+
+        @media (max-width: 900px) {
+            nav {
+                padding: 1rem 1.5rem;
+            }
+
+            .nav-links {
+                gap: 1.5rem;
+            }
+
+            .nav-links a {
+                font-size: 0.85rem;
+            }
+
+            section {
+                padding: 5rem 1.5rem;
+            }
+
+            .hero {
+                padding: 6rem 1.5rem 3rem;
+            }
+
+            .piezo-visual {
+                display: none;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .writing-item {
+                grid-template-columns: 1fr;
+                gap: 0.5rem;
+            }
+
+            .writing-date {
+                font-size: 0.8rem;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-description {
+                font-size: 1.1rem;
+            }
+
+            .hero-eyebrow::before {
+                display: none;
+            }
+
+            .section-eyebrow::before {
+                display: none;
+            }
+
+            .contact-links {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .contact-link {
+                width: 100%;
+                max-width: 280px;
+                justify-content: center;
+            }
+        }
+
+        /* Animations on scroll */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .fade-in-delay-1 { transition-delay: 0.1s; }
+        .fade-in-delay-2 { transition-delay: 0.2s; }
+        .fade-in-delay-3 { transition-delay: 0.3s; }
+        .fade-in-delay-4 { transition-delay: 0.4s; }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <a href="#" class="logo">piezoelectric<span class="logo-dot">.</span>ai</a>
+        <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#writing">Writing</a></li>
+            <li><a href="#contact">Connect</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <p class="hero-eyebrow">Physician · Researcher · Builder</p>
+            <h1>From pressure to <span class="accent">power.</span></h1>
+            <p class="hero-description">
+                I'm Jason Trickovic, a family physician exploring how AI can transform healthcare — 
+                from the exam room to the research lab. I bridge clinical reality with emerging technology, 
+                building and studying what actually works.
+            </p>
+            <a href="#projects" class="hero-cta">
+                Explore my work
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+            </a>
+        </div>
+        
+        <!-- Piezoelectric crystal visualization -->
+        <div class="piezo-visual">
+            <div class="crystal">
+                <div class="energy-ring"></div>
+                <div class="energy-ring"></div>
+                <div class="energy-ring"></div>
+                <div class="crystal-shape"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="about-grid">
+            <div class="about-text">
+                <div class="section-header">
+                    <p class="section-eyebrow">About</p>
+                    <h2 class="section-title">The Bridge Builder</h2>
+                </div>
+                <p>Healthcare is under pressure. Physicians are burning out. Patients wait too long. Information overwhelms us all. I believe artificial intelligence — developed thoughtfully, implemented carefully — can help. But only if we build it right.</p>
+                <p>As a practicing family physician at The Ottawa Hospital, I see these pressures every day. As a researcher, I study how AI can genuinely help (not just promise to). As a clinical lead for AI implementation, I turn ideas into reality.</p>
+                <p>The piezoelectric effect transforms mechanical pressure into electrical energy. That's the metaphor for my work: taking healthcare's immense pressures and converting them into intelligent solutions.</p>
+            </div>
+            <div class="about-credentials">
+                <ul class="credentials-list">
+                    <li>
+                        <svg class="credential-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M4.26 10.147a60.436 60.436 0 00-.491 6.347A48.627 48.627 0 0112 20.904a48.627 48.627 0 018.232-4.41 60.46 60.46 0 00-.491-6.347m-15.482 0a50.57 50.57 0 00-2.658-.813A59.905 59.905 0 0112 3.493a59.902 59.902 0 0110.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.697 50.697 0 0112 13.489a50.702 50.702 0 017.74-3.342" />
+                        </svg>
+                        <div class="credential-content">
+                            <h4>Assistant Professor, University of Ottawa</h4>
+                            <p>Department of Family Medicine · Teaching and research</p>
+                        </div>
+                    </li>
+                    <li>
+                        <svg class="credential-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M9.75 3.104v5.714a2.25 2.25 0 01-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 014.5 0m0 0v5.714c0 .597.237 1.17.659 1.591L19.8 15.3M14.25 3.104c.251.023.501.05.75.082M19.8 15.3l-1.57.393A9.065 9.065 0 0112 15a9.065 9.065 0 00-6.23-.693L5 14.5m14.8.8l1.402 1.402c1.232 1.232.65 3.318-1.067 3.611A48.309 48.309 0 0112 21c-2.773 0-5.491-.235-8.135-.687-1.718-.293-2.3-2.379-1.067-3.61L5 14.5" />
+                        </svg>
+                        <div class="credential-content">
+                            <h4>AI-CARE Study Co-Investigator</h4>
+                            <p>CIHR-funded RCT on AI-generated patient education</p>
+                        </div>
+                    </li>
+                    <li>
+                        <svg class="credential-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 00-2.456 2.456zM16.894 20.567L16.5 21.75l-.394-1.183a2.25 2.25 0 00-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 001.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 001.423 1.423l1.183.394-1.183.394a2.25 2.25 0 00-1.423 1.423z" />
+                        </svg>
+                        <div class="credential-content">
+                            <h4>Clinical Lead, DAX Copilot Implementation</h4>
+                            <p>Microsoft-Nuance ambient AI scribe at The Ottawa Hospital</p>
+                        </div>
+                    </li>
+                    <li>
+                        <svg class="credential-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" />
+                        </svg>
+                        <div class="credential-content">
+                            <h4>AI Literacy Program Designer</h4>
+                            <p>4-module curriculum for residents and faculty</p>
+                        </div>
+                    </li>
+                    <li>
+                        <svg class="credential-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M4.26 10.147a60.436 60.436 0 00-.491 6.347A48.627 48.627 0 0112 20.904a48.627 48.627 0 018.232-4.41 60.46 60.46 0 00-.491-6.347m-15.482 0a50.57 50.57 0 00-2.658-.813A59.905 59.905 0 0112 3.493a59.902 59.902 0 0110.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.697 50.697 0 0112 13.489a50.702 50.702 0 017.74-3.342" />
+                        </svg>
+                        <div class="credential-content">
+                            <h4>AI in Healthcare Certificate</h4>
+                            <p>Michener Institute · 15-month program</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <div class="section-header" style="max-width: 1200px; margin: 0 auto;">
+            <p class="section-eyebrow">Projects</p>
+            <h2 class="section-title">Research, Implementation, Innovation</h2>
+        </div>
+        <div class="projects-grid">
+            <div class="project-card">
+                <span class="project-tag research">Research</span>
+                <h3>AI-CARE Study</h3>
+                <p>A CIHR-funded randomized controlled trial comparing AI-generated versus human-generated patient education materials. Double-blind, crossover, non-inferiority design.</p>
+                <a href="#" class="project-link">
+                    View published protocol
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                    </svg>
+                </a>
+            </div>
+            <div class="project-card">
+                <span class="project-tag implementation">Implementation</span>
+                <h3>DAX Copilot Rollout</h3>
+                <p>Clinical Lead for Microsoft-Nuance's ambient AI scribe implementation in Family Medicine at The Ottawa Hospital. Reducing documentation burden for physicians.</p>
+                <a href="#" class="project-link">
+                    Learn more
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                    </svg>
+                </a>
+            </div>
+            <div class="project-card">
+                <span class="project-tag education">Education</span>
+                <h3>AI Literacy Program</h3>
+                <p>A structured curriculum teaching physicians and trainees to critically evaluate and effectively use AI tools. Four modules covering fundamentals, ethics, learning, and teaching.</p>
+                <a href="#" class="project-link">
+                    Explore the curriculum
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                    </svg>
+                </a>
+            </div>
+            <div class="project-card">
+                <span class="project-tag innovation">Innovation</span>
+                <h3>Field Note Enhancer</h3>
+                <p>An AI-powered platform to streamline residency field notes, capture reflective conversations, and deliver personalized micro-learning after clinical sessions.</p>
+                <span class="project-status">In active development</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Writing Section -->
+    <section id="writing" class="writing">
+        <div class="section-header" style="max-width: 800px; margin: 0 auto;">
+            <p class="section-eyebrow">Writing</p>
+            <h2 class="section-title">Thoughts on AI in Medicine</h2>
+        </div>
+        <div class="writing-list">
+            <a href="#" class="writing-item">
+                <span class="writing-date">Coming Soon</span>
+                <div class="writing-content">
+                    <h3>Why Primary Care Needs Its Own AI Strategy</h3>
+                    <p>Most healthcare AI focuses on specialties. Family medicine has different needs — and bigger opportunities.</p>
+                </div>
+            </a>
+            <a href="#" class="writing-item">
+                <span class="writing-date">Coming Soon</span>
+                <div class="writing-content">
+                    <h3>Teaching Residents to Think Critically About AI</h3>
+                    <p>Lessons from building an AI literacy curriculum for the next generation of physicians.</p>
+                </div>
+            </a>
+            <a href="#" class="writing-item">
+                <span class="writing-date">Coming Soon</span>
+                <div class="writing-content">
+                    <h3>The Documentation Burden: Can AI Actually Help?</h3>
+                    <p>What I've learned from implementing ambient AI scribes in a busy academic practice.</p>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <!-- Concept Section -->
+    <section class="concept">
+        <div class="concept-bg-text">piezoelectric</div>
+        <div class="concept-content">
+            <div class="section-header">
+                <p class="section-eyebrow">The Metaphor</p>
+                <h2 class="section-title">Why "Piezoelectric"?</h2>
+            </div>
+            <p class="concept-quote">
+                "Piezoelectric materials convert mechanical <span class="highlight">pressure</span> into electrical <span class="highlight">power</span>. 
+                Healthcare is under immense pressure. The question is whether we can transform 
+                that pressure into intelligence that actually helps."
+            </p>
+            <p class="concept-explanation">
+                This site is about that transformation. Taking the pressures of modern medicine — 
+                burnout, access barriers, information overload, documentation burden — and exploring 
+                how thoughtfully designed AI can convert them into solutions. Not hype. Not promises. 
+                Real work, carefully studied, honestly shared.
+            </p>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="contact-content">
+            <h2 class="contact-title">Let's Connect</h2>
+            <p class="contact-description">
+                I'm always interested in conversations about AI in healthcare, 
+                medical education, and building technology that genuinely helps.
+            </p>
+            <div class="contact-links">
+                <a href="mailto:jasontrickovic@gmail.com" class="contact-link">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
+                    </svg>
+                    Email
+                </a>
+                <a href="https://www.linkedin.com/in/jasontrickovic/" class="contact-link" target="_blank" rel="noopener">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                    </svg>
+                    LinkedIn
+                </a>
+                <a href="https://github.com/jtrick30" class="contact-link" target="_blank" rel="noopener">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                    </svg>
+                    GitHub
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2025 Jason Trickovic, MD · Built with curiosity and intention</p>
+    </footer>
+
+    <script>
+        // Scroll animation observer
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Add fade-in class to elements we want to animate
+        document.querySelectorAll('.project-card').forEach((el, i) => {
+            el.classList.add('fade-in', `fade-in-delay-${(i % 4) + 1}`);
+            observer.observe(el);
+        });
+
+        document.querySelectorAll('.writing-item').forEach((el, i) => {
+            el.classList.add('fade-in', `fade-in-delay-${(i % 3) + 1}`);
+            observer.observe(el);
+        });
+
+        document.querySelectorAll('.credentials-list li').forEach((el, i) => {
+            el.classList.add('fade-in', `fade-in-delay-${(i % 4) + 1}`);
+            observer.observe(el);
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
