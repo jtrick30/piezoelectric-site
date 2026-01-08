@@ -3,17 +3,17 @@
     "short_name": "Piezoelectric",
     "icons": [
         {
-            "src": "/android-chrome-192x192.png",
+            "src": "/files/android-chrome-192x192.png",
             "sizes": "192x192",
             "type": "image/png"
         },
         {
-            "src": "/android-chrome-512x512.png",
+            "src": "/files/android-chrome-512x512.png",
             "sizes": "512x512",
             "type": "image/png"
         }
     ],
-    "theme_color": "#1B4D3E",
-    "background_color": "#1B4D3E",
+    "theme_color": "#0a0a0f",
+    "background_color": "#0a0a0f",
     "display": "standalone"
 }
