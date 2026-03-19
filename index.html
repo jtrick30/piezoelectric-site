@@ -20,28 +20,23 @@
     
     <style>
         :root {
-            /* Richer, more vibrant palette */
             --color-bg: #FAFAF8;
             --color-bg-warm: #F3F1EB;
             --color-bg-accent: #E8EDE6;
             --color-text: #1A1A1A;
             --color-text-secondary: #4A4A4A;
             
-            /* Deeper, richer greens */
             --color-primary: #1B4D3E;
             --color-primary-light: #2D6A4F;
             --color-primary-pale: #D8E9E4;
             
-            /* Warmer, more prominent gold */
             --color-accent: #C9A227;
             --color-accent-light: #E8D48A;
             --color-accent-glow: rgba(201, 162, 39, 0.2);
             
-            /* Warm coral secondary */
             --color-secondary: #C17767;
             --color-secondary-light: #E8C4BC;
             
-            /* Gradients */
             --gradient-hero: linear-gradient(135deg, rgba(27, 77, 62, 0.03) 0%, rgba(201, 162, 39, 0.05) 100%);
             --gradient-accent: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
             --gradient-gold: linear-gradient(135deg, var(--color-accent) 0%, #D4AF37 100%);
@@ -70,7 +65,6 @@
             overflow-x: hidden;
         }
 
-        /* Subtle grain texture overlay */
         body::before {
             content: '';
             position: fixed;
@@ -571,22 +565,71 @@
             line-height: 1.65;
         }
 
-        .project-status {
+        .status-badge {
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
-            font-size: 0.8rem;
-            color: var(--color-text-secondary);
-            font-style: italic;
+            font-size: 0.75rem;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            padding: 0.35rem 0.8rem;
+            border-radius: 20px;
+            margin-bottom: 1rem;
         }
 
-        .project-status::before {
+        .status-badge::before {
             content: '';
-            width: 8px;
-            height: 8px;
-            background: var(--color-accent);
+            width: 7px;
+            height: 7px;
             border-radius: 50%;
+        }
+
+        .status-badge.active {
+            color: #1B6B3A;
+            background: #D4EDDA;
+        }
+
+        .status-badge.active::before {
+            background: #1B6B3A;
             animation: statusPulse 2s ease-in-out infinite;
+        }
+
+        .status-badge.shipped {
+            color: #155724;
+            background: #D4EDDA;
+        }
+
+        .status-badge.shipped::before {
+            background: #155724;
+        }
+
+        .status-badge.live {
+            color: #0C5460;
+            background: #D1ECF1;
+        }
+
+        .status-badge.live::before {
+            background: #0C5460;
+            animation: statusPulse 2s ease-in-out infinite;
+        }
+
+        .status-badge.prototype {
+            color: #4A4A8A;
+            background: #E8E4F0;
+        }
+
+        .status-badge.prototype::before {
+            background: #4A4A8A;
+        }
+
+        .status-badge.upcoming {
+            color: #856404;
+            background: #FFF3CD;
+        }
+
+        .status-badge.upcoming::before {
+            background: #856404;
         }
 
         @keyframes statusPulse {
@@ -619,54 +662,75 @@
             transform: translateX(2px);
         }
 
-        /* Writing Section */
-        .writing {
-            background: linear-gradient(180deg, var(--color-bg-warm) 0%, var(--color-bg-accent) 100%);
+        /* Speaking Section */
+        .speaking {
+            background: var(--color-bg-warm);
         }
 
-        .writing-list {
-            max-width: 800px;
+        .speaking-list {
+            max-width: 900px;
             margin: 0 auto;
         }
 
-        .writing-item {
+        .speaking-item {
             display: grid;
-            grid-template-columns: 100px 1fr;
+            grid-template-columns: 110px 1fr;
             gap: 2rem;
-            padding: 2rem 0;
+            padding: 1.75rem 0;
             border-bottom: 1px solid rgba(27, 77, 62, 0.1);
-            text-decoration: none;
-            color: inherit;
-            transition: all 0.3s ease;
+            align-items: start;
         }
 
-        .writing-item:hover {
-            padding-left: 1.5rem;
-            border-bottom-color: var(--color-accent);
+        .speaking-item:last-child {
+            border-bottom: none;
         }
 
-        .writing-date {
-            font-size: 0.85rem;
+        .speaking-date {
+            font-size: 0.8rem;
             color: var(--color-text-secondary);
-            padding-top: 0.25rem;
+            padding-top: 0.2rem;
+            line-height: 1.4;
         }
 
-        .writing-content h3 {
+        .speaking-content h3 {
+            font-size: 1rem;
+            font-weight: 500;
+            margin-bottom: 0.35rem;
+            color: var(--color-text);
+            line-height: 1.4;
+        }
+
+        .speaking-content p {
+            font-size: 0.875rem;
+            color: var(--color-text-secondary);
+            margin: 0;
+        }
+
+        .speaking-badges {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin-top: 0.5rem;
+        }
+
+        /* Writing Section */
+        .writing {
+            background: linear-gradient(180deg, var(--color-bg) 0%, var(--color-bg-accent) 100%);
+        }
+
+        .writing-placeholder {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 3rem 0;
+            border-top: 1px solid rgba(27, 77, 62, 0.1);
+        }
+
+        .writing-placeholder p {
             font-family: var(--font-serif);
-            font-size: 1.35rem;
-            font-weight: 400;
-            margin-bottom: 0.5rem;
-            letter-spacing: -0.01em;
-            transition: color 0.2s ease;
-        }
-
-        .writing-item:hover .writing-content h3 {
-            color: var(--color-primary);
-        }
-
-        .writing-content p {
+            font-style: italic;
+            font-size: 1.2rem;
             color: var(--color-text-secondary);
-            font-size: 0.95rem;
         }
 
         /* Piezoelectric Concept Section */
@@ -878,13 +942,9 @@
                 grid-template-columns: 1fr;
             }
 
-            .writing-item {
+            .speaking-item {
                 grid-template-columns: 1fr;
                 gap: 0.5rem;
-            }
-
-            .writing-date {
-                font-size: 0.8rem;
             }
         }
 
@@ -946,6 +1006,7 @@
         <ul class="nav-links">
             <li><a href="#about">About</a></li>
             <li><a href="#projects">Projects</a></li>
+            <li><a href="#speaking">Talks</a></li>
             <li><a href="#writing">Writing</a></li>
             <li><a href="#contact">Connect</a></li>
         </ul>
@@ -954,15 +1015,13 @@
     <!-- Hero Section -->
     <section class="hero">
         <div class="hero-content">
-            <p class="hero-eyebrow">Physician · Researcher · Builder</p>
-            <h1>From pressure to <span class="accent">power.</span></h1>
+            <p class="hero-eyebrow">Physician · Builder · Healthcare AI</p>
+            <h1>I don't talk about healthcare AI. I <span class="accent">build it.</span></h1>
             <p class="hero-description">
-                I'm Jason Trickovic, a family physician exploring how AI can transform healthcare — 
-                from the exam room to academic research. I bridge our clinical reality with emerging technology, 
-                building and understanding what actually works.
+                I'm Jason Trickovic — full-time family physician, assistant professor, and healthcare AI builder. I'm co-investigator on a CIHR-funded randomized controlled trial on AI-generated patient education. I was the Family Medicine Clinical Lead for the DAX Copilot rollout at The Ottawa Hospital. I'm building an AI literacy curriculum for residents and faculty. And I'm prototyping tools to fix what's broken in medicine — in practice and in training.
             </p>
             <a href="#projects" class="hero-cta">
-                Explore my work
+                See what I've built
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
                 </svg>
@@ -986,11 +1045,11 @@
             <div class="about-text">
                 <div class="section-header">
                     <p class="section-eyebrow">About</p>
-                    <h2 class="section-title">The Bridge Builder</h2>
+                    <h2 class="section-title">The work, plainly stated.</h2>
                 </div>
-                <p>Healthcare is under pressure. Physicians are burning out. Patients wait too long. Information overwhelms us all. I believe artificial intelligence — developed thoughtfully, implemented carefully — can help. But only if we build it right.</p>
-                <p>As a practicing family physician, I see these pressures every day. As a researcher, I study how AI can genuinely help (not just promise to). As a clinical lead for AI implementation projects, I help turn ideas into reality.</p>
-                <p>The piezoelectric effect transforms mechanical pressure into usable electrical energy. That's the metaphor for my work: taking healthcare's immense pressures and converting them into intelligent solutions.</p>
+                <p>I practice full-time family medicine in Ottawa, hold an appointment at the University of Ottawa Department of Family Medicine, and train the next generation of family physicians as a clinical preceptor. That's the clinical half.</p>
+                <p>The other half: I'm co-investigator on a CIHR-funded randomized controlled trial on AI-generated patient education — protocol accepted at BMJ Open. I was Family Medicine Clinical Lead for the DAX Copilot rollout at The Ottawa Hospital, part of a broader implementation team representing FM physicians on the ground. I'm building and implementing an AI literacy curriculum for residents and faculty. And I'm prototyping tools to fix the parts of medicine — in practice and in training — that haven't been touched yet.</p>
+                <p>The piezoelectric effect transforms mechanical pressure into usable electrical energy. That's the metaphor for this work: taking the pressures of modern medicine and turning them into something useful.</p>
             </div>
             <div class="about-credentials">
                 <ul class="credentials-list">
@@ -1009,7 +1068,7 @@
                         </svg>
                         <div class="credential-content">
                             <h4>AI-CARE Study Co-Investigator</h4>
-                            <p>CIHR-funded RCT on AI-generated patient education</p>
+                            <p>CIHR-funded RCT on AI-generated patient education · Protocol in BMJ Open</p>
                         </div>
                     </li>
                     <li>
@@ -1027,7 +1086,7 @@
                         </svg>
                         <div class="credential-content">
                             <h4>AI Literacy Program Designer</h4>
-                            <p>practical curriculum for residents and faculty</p>
+                            <p>Practical curriculum for residents and faculty · Being implemented</p>
                         </div>
                     </li>
                     <li>
@@ -1036,7 +1095,7 @@
                         </svg>
                         <div class="credential-content">
                             <h4>AI in Healthcare Certification</h4>
-                            <p>Michener Institute · AI in Healthcare · 15-month program</p>
+                            <p>Michener Institute · 15-month program</p>
                         </div>
                     </li>
                 </ul>
@@ -1053,10 +1112,11 @@
         <div class="projects-grid">
             <div class="project-card">
                 <span class="project-tag research">Research</span>
+                <div class="speaking-badges"><span class="status-badge active">Active</span></div>
                 <h3>AI-CARE Study</h3>
-                <p>A CIHR-funded randomized controlled trial comparing AI-generated versus human-generated patient education materials. Double-blind, crossover, non-inferiority design.</p>
+                <p>A randomized, double-blind, crossover, non-inferiority controlled trial where primary care providers and patients compare human- and AI-generated digital health messages. Protocol accepted at BMJ Open.</p>
                 <a href="https://www.medrxiv.org/content/10.64898/2025.12.19.25341381v1" class="project-link" target="_blank" rel="noopener">
-                    View protocol manuscript
+                    View protocol
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
                     </svg>
@@ -1064,10 +1124,11 @@
             </div>
             <div class="project-card">
                 <span class="project-tag implementation">Implementation</span>
+                <div class="speaking-badges"><span class="status-badge shipped">Shipped</span></div>
                 <h3>DAX Copilot Rollout</h3>
-                <p>Family Medicine Clinical Lead for Microsoft-Nuance's ambient AI scribe implementation in Family Medicine at The Ottawa Hospital. Reducing documentation burden for physicians.</p>
+                <p>Family Medicine Clinical Lead for ambient AI scribe deployment at The Ottawa Hospital. Part of a broader institutional rollout — representing FM physicians on the ground. Microsoft published the case study.</p>
                 <a href="https://www.microsoft.com/en/customers/story/25270-the-ottawa-hospital-microsoft-365" class="project-link" target="_blank" rel="noopener">
-                    Read the Microsoft case study
+                    Read the case study
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
                     </svg>
@@ -1075,10 +1136,11 @@
             </div>
             <div class="project-card">
                 <span class="project-tag education">Education</span>
+                <div class="speaking-badges"><span class="status-badge live">Live</span></div>
                 <h3>AI Literacy Program</h3>
-                <p>A structured curriculum teaching physicians and trainees to critically evaluate and effectively use AI tools. Four modules covering fundamentals, ethics, learning, and teaching.</p>
+                <p>Structured curriculum for residents and faculty: fundamentals, ethics, clinical application, teaching AI. Four modules. Currently being implemented within the department.</p>
                 <a href="/files/AI_Literacy_Program_Overview.pdf" class="project-link" target="_blank" rel="noopener">
-                   Download program overview
+                   Download overview
                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                        <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
                    </svg>
@@ -1086,10 +1148,67 @@
             </div>
             <div class="project-card">
                 <span class="project-tag innovation">Innovation</span>
-                <h3>Field Note Enhancer</h3>
-                <p>An AI-powered platform to streamline residency field notes, capture reflective conversations, and deliver personalized micro-learning after clinical sessions.</p>
-                <span class="project-status">In active development</span>
+                <div class="speaking-badges"><span class="status-badge prototype">Prototype</span></div>
+                <h3>Ambient Experiential Clinical Coach</h3>
+                <p>AI tool that turns residency field notes into active coaching — captures reflective conversations, surfaces patterns, delivers micro-learning after clinical sessions. Early prototype.</p>
             </div>
+        </div>
+    </section>
+
+    <!-- Speaking Section -->
+    <section id="speaking" class="speaking">
+        <div class="section-header" style="max-width: 900px; margin: 0 auto;">
+            <p class="section-eyebrow">Invited Talks</p>
+            <h2 class="section-title">I get asked to speak on AI in medicine — to clinicians, residents, and researchers. These are the talks.</h2>
+        </div>
+        <div class="speaking-list">
+
+            <div class="speaking-item">
+                <div class="speaking-date">
+                    May 2026
+                    <div class="speaking-badges" style="margin-top: 0.4rem;"><span class="status-badge upcoming">Upcoming</span></div>
+                </div>
+                <div class="speaking-content">
+                    <h3>"Five More Ways Artificial Intelligence Can Improve Non-Clinical and Educational Settings"</h3>
+                    <p>75th Annual Refresher Course for Family Physicians · Ottawa Convention Centre</p>
+                </div>
+            </div>
+
+            <div class="speaking-item">
+                <div class="speaking-date">
+                    May 2026
+                    <div class="speaking-badges" style="margin-top: 0.4rem;"><span class="status-badge upcoming">Upcoming</span></div>
+                </div>
+                <div class="speaking-content">
+                    <h3>"AI in Medicine: Benefits, Pitfalls, and Impacts on Physician Health"</h3>
+                    <p>TOH Family Medicine Workshop · The Ottawa Hospital</p>
+                </div>
+            </div>
+
+            <div class="speaking-item">
+                <div class="speaking-date">Oct 2025</div>
+                <div class="speaking-content">
+                    <h3>"AI Literacy Program" — Lightning Talk</h3>
+                    <p>Ottawa Symposium for AI in Health Research</p>
+                </div>
+            </div>
+
+            <div class="speaking-item">
+                <div class="speaking-date">Oct 2025</div>
+                <div class="speaking-content">
+                    <h3>Panel Speaker — "AI Advancements in Healthcare"</h3>
+                    <p>Department of Family Medicine Assembly · University of Ottawa</p>
+                </div>
+            </div>
+
+            <div class="speaking-item">
+                <div class="speaking-date">Apr 2025</div>
+                <div class="speaking-content">
+                    <h3>"Artificial Intelligence in your Office: Should I worry?"</h3>
+                    <p>74th Annual Refresher Course for Family Physicians · Ottawa</p>
+                </div>
+            </div>
+
         </div>
     </section>
 
@@ -1097,30 +1216,10 @@
     <section id="writing" class="writing">
         <div class="section-header" style="max-width: 800px; margin: 0 auto;">
             <p class="section-eyebrow">Writing</p>
-            <h2 class="section-title">Thoughts on AI in Medicine</h2>
+            <h2 class="section-title">Thinking out loud about AI in medicine.</h2>
         </div>
-        <div class="writing-list">
-            <a href="#" class="writing-item">
-                <span class="writing-date">Coming Soon</span>
-                <div class="writing-content">
-                    <h3>Why Primary Care Needs Its Own AI Strategy</h3>
-                    <p>Most healthcare AI focuses on hospital medicine and specialties. Family medicine has different needs — and bigger opportunities.</p>
-                </div>
-            </a>
-            <a href="#" class="writing-item">
-                <span class="writing-date">Coming Soon</span>
-                <div class="writing-content">
-                    <h3>Teaching Residents (and Preceptors) to Think Critically About AI</h3>
-                    <p>Lessons from building an AI literacy curriculum for the next generation of physicians.</p>
-                </div>
-            </a>
-            <a href="#" class="writing-item">
-                <span class="writing-date">Coming Soon</span>
-                <div class="writing-content">
-                    <h3>The Admin Burden: Do we understand the problem? Can AI Actually Help?</h3>
-                    <p>What I've learned from implementing ambient AI scribes in a busy academic practice.</p>
-                </div>
-            </a>
+        <div class="writing-placeholder">
+            <p>Writing in progress. Built things first.</p>
         </div>
     </section>
 
@@ -1138,9 +1237,9 @@
                 that pressure into intelligence that actually helps."
             </p>
             <p class="concept-explanation">
-                This site is about that transformation. Taking the pressures of modern medicine — 
-                burnout, access barriers, information overload, admin burden — and exploring 
-                how thoughtfully designed AI can convert them into solutions. Not hype. Not promises. 
+                This site is about that conversion. Taking the pressures of modern medicine — 
+                burnout, access barriers, information overload, admin burden — and building AI 
+                that does something useful about them. Not hype. Not promises. 
                 Real work, carefully studied, honestly shared.
             </p>
         </div>
@@ -1151,8 +1250,8 @@
         <div class="contact-content">
             <h2 class="contact-title">Let's Connect</h2>
             <p class="contact-description">
-                I'm always interested in conversations about AI in healthcare, 
-                medical education, and building technology that genuinely helps.
+                I'm always open to conversations about AI in healthcare, 
+                implementation, research, and speaking opportunities.
             </p>
             <div class="contact-links">
                 <a href="mailto:jason@piezoelectric.ai" class="contact-link">
@@ -1167,7 +1266,7 @@
                     </svg>
                     LinkedIn
                 </a>
-                <a href="https://github.com/j30" class="contact-link" target="_blank" rel="noopener">
+                <a href="https://github.com/jtrick30" class="contact-link" target="_blank" rel="noopener">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
                         <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
                     </svg>
@@ -1179,7 +1278,7 @@
 
     <!-- Footer -->
     <footer>
-        <p>© 2025 Jason Trickovic, MD · Built with curiosity and intention</p>
+        <p>© 2026 Jason Trickovic, MD</p>
     </footer>
 
     <script>
@@ -1197,13 +1296,12 @@
             });
         }, observerOptions);
 
-        // Add fade-in class to elements we want to animate
         document.querySelectorAll('.project-card').forEach((el, i) => {
             el.classList.add('fade-in', `fade-in-delay-${(i % 4) + 1}`);
             observer.observe(el);
         });
 
-        document.querySelectorAll('.writing-item').forEach((el, i) => {
+        document.querySelectorAll('.speaking-item').forEach((el, i) => {
             el.classList.add('fade-in', `fade-in-delay-${(i % 3) + 1}`);
             observer.observe(el);
         });
