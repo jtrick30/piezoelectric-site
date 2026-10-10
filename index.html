@@ -4,269 +4,264 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Piezoelectric | Jason Trickovic, MD</title>
-    <meta name="description" content="Jason Trickovic, family physician and healthcare AI builder. Through Piezoelectric, he helps health organizations and educators adopt AI with evidence, privacy and safety built in.">
+    <meta name="description" content="Jason Trickovic, family physician and assistant professor at the University of Ottawa. Through Piezoelectric, he helps health organizations and educators adopt AI with evidence, privacy and safety built in.">
 
     <link rel="icon" type="image/svg+xml" href="/files/favicon.svg">
     <link rel="icon" type="image/png" sizes="32x32" href="/files/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/files/favicon-16x16.png">
     <link rel="apple-touch-icon" sizes="180x180" href="/files/apple-touch-icon.png">
     <link rel="manifest" href="/files/site.webmanifest">
-    <meta name="theme-color" content="#1C1530">
-
-    <link rel="preload" href="files/fonts/shantell-sans-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
+    <meta name="theme-color" content="#01363B">
+    <link rel="preload" href="files/fonts/newsreader-latin-500-normal.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="files/portrait.webp" as="image">
 
     <style>
-        /* Fonts are self-hosted (SIL OFL): no third-party requests from visitors' browsers. */
-        @font-face { font-family: "Shantell Sans"; src: url("files/fonts/shantell-sans-latin-400-normal.woff2") format("woff2"); font-weight: 400; font-style: normal; font-display: swap; }
-        @font-face { font-family: "Shantell Sans"; src: url("files/fonts/shantell-sans-latin-600-normal.woff2") format("woff2"); font-weight: 600; font-style: normal; font-display: swap; }
-        @font-face { font-family: "Shantell Sans"; src: url("files/fonts/shantell-sans-latin-700-normal.woff2") format("woff2"); font-weight: 700; font-style: normal; font-display: swap; }
-        @font-face { font-family: "Atkinson Hyperlegible"; src: url("files/fonts/atkinson-hyperlegible-latin-400-normal.woff2") format("woff2"); font-weight: 400; font-style: normal; font-display: swap; }
-        @font-face { font-family: "Atkinson Hyperlegible"; src: url("files/fonts/atkinson-hyperlegible-latin-400-italic.woff2") format("woff2"); font-weight: 400; font-style: italic; font-display: swap; }
-        @font-face { font-family: "Atkinson Hyperlegible"; src: url("files/fonts/atkinson-hyperlegible-latin-700-normal.woff2") format("woff2"); font-weight: 700; font-style: normal; font-display: swap; }
+        /* Fonts are self-hosted (SIL OFL): visitors' browsers make no third-party requests. */
+        @font-face { font-family: "Newsreader"; src: url("files/fonts/newsreader-latin-500-normal.woff2") format("woff2"); font-weight: 500; font-display: swap; }
+        @font-face { font-family: "Newsreader"; src: url("files/fonts/newsreader-latin-400-italic.woff2") format("woff2"); font-weight: 400; font-style: italic; font-display: swap; }
+        @font-face { font-family: "Hanken Grotesk"; src: url("files/fonts/hanken-grotesk-latin-400-normal.woff2") format("woff2"); font-weight: 400; font-display: swap; }
+        @font-face { font-family: "Hanken Grotesk"; src: url("files/fonts/hanken-grotesk-latin-600-normal.woff2") format("woff2"); font-weight: 600; font-display: swap; }
+
+        /* Palette sampled from the portrait */
         :root {
-            --night: #1C1530;      /* the workshop after dark */
-            --night-deep: #130E22;
-            --tube: #FF6A00;       /* electric orange: the spark */
-            --tube-core: #FFD9BD;
-            --violet: #6D28D9;     /* Piezoelectric purple */
-            --violet-glow: #C4B0FF;
-            --paper: #F6F3FB;      /* lilac-tinted paper */
-            --ink: #251D3A;
-            --ink-soft: #5B5172;
-            --rule: #DDD5EC;
-
-            --hand: "Shantell Sans", "Comic Neue", system-ui, sans-serif;
-            --body: "Atkinson Hyperlegible", system-ui, -apple-system, sans-serif;
-
-            --measure: 64ch;
-            --gutter: clamp(1rem, 4vw, 2.5rem);
+            --night: #01363B;      /* sky */
+            --night-deep: #011E25;
+            --moss: #46604B;
+            --ochre: #ED9F41;      /* moon */
+            --rust: #8A4B18;       /* book spines, text-safe on parchment */
+            --parchment: #EFE6CF;  /* book pages */
+            --paper: #F7F2E4;
+            --ink: #10292B;
+            --ink-soft: #3B5352;
+            --rule: #D8CCAE;
+            --serif: "Newsreader", Georgia, serif;
+            --sans: "Hanken Grotesk", system-ui, -apple-system, sans-serif;
+            --gutter: clamp(1.25rem, 4vw, 2rem);
         }
-
         *, *::before, *::after { box-sizing: border-box; }
         html { scroll-behavior: smooth; }
         @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
-
-        body {
-            margin: 0;
-            background: var(--paper);
-            color: var(--ink);
-            font-family: var(--body);
-            font-size: 1.0625rem;
-            line-height: 1.6;
-            -webkit-font-smoothing: antialiased;
-        }
-
-        a { color: var(--violet); text-underline-offset: 0.2em; text-decoration-thickness: 1.5px; }
-        a:hover { color: var(--tube); }
-        :focus-visible { outline: 3px solid var(--tube); outline-offset: 3px; border-radius: 6px; }
-
-        h1, h2, h3 { text-wrap: balance; font-family: var(--hand); font-weight: 700; line-height: 1.15; letter-spacing: -0.005em; margin: 0; }
-        h2 { font-size: clamp(1.75rem, 3.4vw, 2.4rem); margin-bottom: 1.25rem; }
-        h3 { font-size: 1.2rem; font-weight: 600; }
+        body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--sans); font-size: 1.0625rem; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+        a { color: var(--rust); text-underline-offset: 3px; text-decoration-thickness: 1.5px; }
+        a:hover { color: var(--ink); }
+        :focus-visible { outline: 3px solid var(--ochre); outline-offset: 3px; }
+        h1, h2, h3 { text-wrap: balance; margin: 0; }
+        h2 { font-family: var(--serif); font-weight: 500; font-size: clamp(2rem, 3.6vw, 2.6rem); line-height: 1.1; letter-spacing: -0.01em; margin-bottom: 1.5rem; }
+        h3 { font-size: 1.15rem; font-weight: 600; line-height: 1.3; }
         p { margin: 0 0 1rem; }
+        .wrap { max-width: 1180px; margin: 0 auto; padding: 0 var(--gutter); }
 
-        .wrap { max-width: 1120px; margin: 0 auto; padding: 0 var(--gutter); }
+        .btn { display: inline-block; padding: 0.8rem 1.25rem; border-radius: 3px; font-weight: 600; font-size: 0.95rem; text-decoration: none; }
+        .btn-p { background: var(--ochre); color: var(--night-deep); }
+        .btn-p:hover { background: #F4B566; color: var(--night-deep); }
+        .btn-s { color: var(--parchment); box-shadow: inset 0 0 0 1.5px #4E7A72; }
+        .btn-s:hover { color: #fff; box-shadow: inset 0 0 0 1.5px var(--ochre); }
 
-        /* ---------- Nav ---------- */
-        .site-nav {
-            display: flex; justify-content: space-between; align-items: center; gap: 1rem;
-            max-width: 1120px; margin: 0 auto; padding: 1.1rem var(--gutter);
-        }
-        .wordmark { font-family: var(--hand); font-weight: 700; font-size: 1.2rem; color: var(--ink); text-decoration: none; }
-        .wordmark span { color: var(--tube); }
-        .site-nav ul { display: flex; gap: clamp(0.9rem, 3vw, 2rem); list-style: none; margin: 0; padding: 0; }
-        .site-nav ul a { color: var(--ink); text-decoration: none; font-weight: 700; font-size: 0.98rem; }
-        .site-nav ul a:hover { color: var(--violet); }
-        @media (max-width: 560px) {
-            .site-nav { flex-direction: column; align-items: flex-start; gap: 0.4rem; }
-            .site-nav ul { gap: 1.1rem; }
-        }
+        /* ---------- Header + hero ---------- */
+        .night { position: relative; background: var(--night); color: var(--parchment); overflow: hidden; }
+        .grain::after { content: ""; position: absolute; inset: 0; pointer-events: none; opacity: .22; mix-blend-mode: overlay;
+            background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 .9 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>"); }
+        .site-nav { position: relative; z-index: 2; display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; padding-top: 1.4rem; padding-bottom: 1rem; }
+        .brand { font-family: var(--serif); font-weight: 500; font-size: 1.4rem; color: var(--parchment); text-decoration: none; }
+        .brand:hover { color: #fff; }
+        .site-nav ul { display: flex; gap: clamp(1rem, 3vw, 1.75rem); list-style: none; margin: 0; padding: 0; }
+        .site-nav ul a { color: #CFE0D8; text-decoration: none; font-size: 0.95rem; }
+        .site-nav ul a:hover { color: var(--ochre); }
 
-        /* ---------- Hero: the TV screen ---------- */
-        .screen {
-            position: relative; overflow: hidden;
-            margin: 0 auto; max-width: 1120px;
-            border-radius: clamp(22px, 4vw, 44px);
-            background:
-                radial-gradient(120% 90% at 50% 38%, #2C2148 0%, var(--night) 55%, var(--night-deep) 100%);
-            color: #EFE9FA;
-            padding: clamp(1.5rem, 5vw, 3.5rem) var(--gutter) clamp(2.5rem, 6vw, 4rem);
-            box-shadow: inset 0 0 80px rgba(0,0,0,0.55);
-        }
-        .screen::after { /* soft scanlines: retro TV, never sharp */
-            content: ""; position: absolute; inset: 0; pointer-events: none;
-            background: repeating-linear-gradient(to bottom, rgba(255,255,255,0.025) 0 1px, transparent 1px 4px);
-            mix-blend-mode: screen;
-        }
-        .hero-outer { padding: 0 var(--gutter); }
+        .hero { position: relative; z-index: 1; display: grid; grid-template-columns: 1.05fr .95fr; min-height: 600px; }
+        .hero-copy { padding: 3.5rem 0 4.5rem; align-self: center; }
+        .hero h1 { font-family: var(--serif); font-weight: 500; font-size: clamp(2.5rem, 5.2vw, 4.1rem); line-height: 1.03; letter-spacing: -0.015em; margin-bottom: 1.5rem; }
+        .hero .lede { font-size: 1.18rem; color: #D6E2DA; max-width: 31em; margin-bottom: 1.9rem; }
+        .actions { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+        .portrait { align-self: end; justify-self: end; width: 100%; max-width: 520px; }
+        .portrait svg { display: block; width: 100%; height: auto;
+            --m: linear-gradient(to left, transparent 0, #000 8%, #000 72%, transparent 100%), linear-gradient(to bottom, transparent 0, #000 14%);
+            -webkit-mask-image: var(--m); -webkit-mask-composite: source-in; mask-image: var(--m); mask-composite: intersect; }
 
-        .neon-mark { display: block; width: min(640px, 100%); height: auto; margin: 0 auto 1.25rem; overflow: visible; }
-        .neon-mark text { font-family: var(--hand); font-weight: 700; }
-
-        .tube-glow { stroke: var(--tube); stroke-width: 16; opacity: 0.85; filter: url(#bloom); }
-        .tube-mid { stroke: #FF8A3D; stroke-width: 7; filter: url(#bloom-tight); }
-        .tube-core { stroke: var(--tube-core); stroke-width: 4.5; }
-        .tube-glow, .tube-mid, .tube-core { fill: none; stroke-linecap: round; stroke-linejoin: round; }
-        .spark-bolt { fill: none; stroke: #FFF2E6; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; filter: url(#bloom-tight); }
-        .letters { fill: #F3EDFF; filter: url(#violet-bloom); }
-        .letters-ai { fill: var(--tube-core); filter: url(#bloom-tight); }
-
-        .hero-copy { max-width: 46rem; margin: 0 auto; text-align: center; position: relative; z-index: 1; }
-        .hero-copy h1 { font-size: clamp(2rem, 5.2vw, 3.4rem); color: #FFFFFF; margin-bottom: 1rem; }
-        .hero-copy p { color: #D9D0EC; font-size: 1.12rem; max-width: 40rem; margin-left: auto; margin-right: auto; }
-        .hero-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.8rem; margin-top: 1.6rem; }
-
-        .btn {
-            display: inline-block; font-family: var(--body); font-weight: 700; font-size: 1rem;
-            padding: 0.8rem 1.4rem; border-radius: 999px; text-decoration: none;
-            border: 2px solid transparent; transition: background-color .15s, color .15s, border-color .15s;
-        }
-        .btn-primary { background: var(--tube); color: #1C1530; }
-        .btn-primary:hover { background: #FF8A3D; color: #1C1530; }
-        .btn-ghost { border-color: #B9A9E0; color: #F3EDFF; }
-        .btn-ghost:hover { border-color: var(--tube); color: #FFFFFF; }
-
-        /* One orchestrated moment: the tube lights, the spark jumps, the letters flicker on */
-        .anim .tube-glow, .anim .tube-mid, .anim .tube-core { stroke-dasharray: 1500; stroke-dashoffset: 1500; animation: draw 1.5s cubic-bezier(.45,.05,.35,1) .25s forwards; }
-        .anim .spark-bolt { opacity: 0; animation: zap 0.5s steps(1) 1.7s forwards; }
-        .anim .letters, .anim .letters-ai { opacity: 0; animation: flicker 0.9s linear 1.95s forwards; }
-        @keyframes draw { to { stroke-dashoffset: 0; } }
-        @keyframes zap { 0% {opacity:1} 20% {opacity:0} 40% {opacity:1} 60% {opacity:.2} 100% {opacity:1} }
-        @keyframes flicker {
-            0% {opacity:0} 8% {opacity:.9} 12% {opacity:.1} 22% {opacity:1} 27% {opacity:.35}
-            36% {opacity:1} 70% {opacity:.85} 100% {opacity:1}
-        }
-        .lit .spark-bolt { animation: hum 3.2s ease-in-out infinite; }
-        @keyframes hum { 0%,100% {opacity:1} 48% {opacity:1} 50% {opacity:.55} 52% {opacity:1} }
-        @media (prefers-reduced-motion: reduce) {
-            .anim .tube-glow, .anim .tube-mid, .anim .tube-core, .anim .spark-bolt, .anim .letters, .anim .letters-ai, .lit .spark-bolt {
-                animation: none; stroke-dashoffset: 0; opacity: 1;
-            }
-        }
-
-        /* ---------- Sections ---------- */
-        section { padding: clamp(3.5rem, 8vw, 6rem) 0; }
-        .lede { color: var(--ink-soft); max-width: var(--measure); font-size: 1.1rem; }
-
-        /* About */
+        /* ---------- About ---------- */
+        .section { padding: clamp(3.5rem, 8vw, 5.5rem) 0; }
         .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2rem, 6vw, 5rem); align-items: start; }
-        .about-text p { max-width: var(--measure); font-size: 1.12rem; }
-        .creds { list-style: none; margin: 0; padding: 0; border-left: 3px solid var(--rule); }
-        .creds li { padding: 0.15rem 0 1.15rem 1.25rem; position: relative; }
-        .creds li::before { /* a small solder dot on the wire */
-            content: ""; position: absolute; left: -8px; top: 0.55rem;
-            width: 13px; height: 13px; border-radius: 50%;
-            background: var(--paper); border: 3px solid var(--violet);
-        }
-        .creds strong { display: block; font-size: 1.02rem; }
+        .about-text p { font-size: 1.15rem; max-width: 34em; }
+        .creds { list-style: none; margin: 0; padding: 0; }
+        .creds li { padding: 0.9rem 0; border-top: 1px solid var(--rule); }
+        .creds li:last-child { border-bottom: 1px solid var(--rule); }
+        .creds strong { display: block; font-weight: 600; }
         .creds span { color: var(--ink-soft); font-size: 0.95rem; }
-        @media (max-width: 820px) { .about-grid { grid-template-columns: 1fr; } }
 
-        /* Projects: a workbench of index cards */
-        .projects { background: #EFEAF7; }
-        .bench { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr)); gap: 1.4rem; margin-top: 2rem; }
-        .card {
-            background: #FFFFFF; border: 2px solid var(--ink); border-radius: 18px 22px 16px 24px;
-            padding: 1.5rem 1.5rem 1.35rem; display: flex; flex-direction: column;
+        /* ---------- Work ---------- */
+        .work { background: var(--parchment); }
+        .work-list { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2.75rem 2.5rem; }
+        .item { border-top: 2px solid var(--ink); padding-top: 1rem; display: flex; flex-direction: column; }
+        .kind { font-family: var(--serif); font-style: italic; color: var(--rust); font-size: 1.05rem; }
+        .status { color: var(--ink-soft); font-size: 0.9rem; }
+        .item h3 { margin: 0.2rem 0 0.6rem; }
+        .item p { color: var(--ink-soft); font-size: 1rem; flex: 1; }
+        .item a { font-weight: 600; font-size: 0.95rem; align-self: flex-start; }
+
+        /* ---------- Talks ---------- */
+        .talks { list-style: none; margin: 0; padding: 0; max-width: 900px; }
+        .talks li { display: grid; grid-template-columns: 8rem 1fr; gap: 1.25rem; padding: 1.1rem 0; border-top: 1px solid var(--rule); }
+        .talks li:last-child { border-bottom: 1px solid var(--rule); }
+        .when { font-family: var(--serif); font-style: italic; color: var(--rust); font-size: 1.05rem; }
+        .when small { display: block; font-family: var(--sans); font-style: normal; font-weight: 600; font-size: 0.85rem; color: var(--ink); }
+        .talks h3 { font-size: 1.05rem; margin-bottom: 0.2rem; }
+        .talks p { margin: 0; color: var(--ink-soft); font-size: 0.97rem; }
+
+        /* ---------- Why the name ---------- */
+        .name { background: var(--parchment); }
+        .name blockquote { margin: 0; font-family: var(--serif); font-style: italic; font-size: clamp(1.4rem, 2.6vw, 1.9rem); line-height: 1.4; max-width: 30em; color: var(--ink); }
+        .name p { color: var(--ink-soft); max-width: 40em; margin-top: 1.5rem; }
+
+        /* ---------- Contact + footer ---------- */
+        .contact { padding: clamp(3.5rem, 8vw, 5rem) 0; }
+        .contact h2 { color: var(--parchment); }
+        .contact p { color: #D6E2DA; max-width: 34em; font-size: 1.1rem; }
+        .contact .actions { margin-top: 1.5rem; }
+        footer { background: var(--night-deep); color: #7E9A93; font-size: 0.85rem; }
+        footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0.5rem; padding-top: 1.25rem; padding-bottom: 1.4rem; }
+        footer .credit { color: #2E5650; } /* deliberately quiet */
+
+        @media (max-width: 860px) {
+            .hero { grid-template-columns: 1fr; min-height: 0; }
+            .hero-copy { order: 2; padding: 1.5rem 0 3rem; }
+            .portrait { order: 1; justify-self: center; max-width: 360px; }
+            .portrait svg { --m: linear-gradient(to top, transparent 0, #000 22%); }
+            .about-grid { grid-template-columns: 1fr; }
+            .work-list { grid-template-columns: 1fr; gap: 2rem; }
         }
-        .card-meta { display: flex; flex-wrap: wrap; gap: 0.45rem; margin-bottom: 0.9rem; }
-        .chip { font-size: 0.85rem; font-weight: 700; padding: 0.15rem 0.65rem; border-radius: 999px; background: var(--paper); border: 1.5px solid var(--rule); color: var(--ink-soft); }
-        .chip-status { background: #FFF1E6; border-color: #FFC9A1; color: #8A3A00; }
-        .card h3 { margin-bottom: 0.6rem; }
-        .card p { color: var(--ink-soft); font-size: 1rem; flex: 1; }
-        .card a { font-weight: 700; align-self: flex-start; }
-
-        /* Talks: a dated timeline */
-        .talks { list-style: none; margin: 2rem 0 0; padding: 0; max-width: 880px; }
-        .talks li { display: grid; grid-template-columns: 7.5rem 1fr; gap: 1.25rem; padding: 1.15rem 0; border-top: 1.5px solid var(--rule); }
-        .talks li:last-child { border-bottom: 1.5px solid var(--rule); }
-        .talk-date { font-family: var(--hand); font-weight: 600; color: var(--violet); }
-        .talk-date em { display: block; font-style: normal; font-family: var(--body); font-size: 0.85rem; font-weight: 700; color: #8A3A00; }
-        .talks h3 { font-size: 1.1rem; margin-bottom: 0.25rem; }
-        .talks p { color: var(--ink-soft); font-size: 0.97rem; margin: 0; }
-        @media (max-width: 560px) { .talks li { grid-template-columns: 1fr; gap: 0.25rem; } }
-
-        /* Concept, with the contraption */
-        .concept-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: clamp(2rem, 5vw, 4rem); align-items: center; }
-        .concept-quote { font-family: var(--hand); font-size: clamp(1.25rem, 2.4vw, 1.6rem); line-height: 1.45; font-weight: 400; max-width: 36ch; margin-bottom: 1.25rem; }
-        .concept-grid p.plain { color: var(--ink-soft); max-width: var(--measure); }
-        .contraption { width: 100%; max-width: 420px; height: auto; justify-self: center; }
-        .contraption .line { fill: none; stroke: var(--ink); stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
-        .contraption .fill-paper { fill: #FFFFFF; }
-        .contraption .crystal { fill: #EDE5FF; stroke: var(--violet); stroke-width: 3; stroke-linejoin: round; }
-        .contraption .glow { fill: #FFE2CC; }
-        .contraption .bolt { fill: none; stroke: var(--tube); stroke-width: 3.5; stroke-linecap: round; stroke-linejoin: round; }
-        @media (max-width: 820px) { .concept-grid { grid-template-columns: 1fr; } }
-
-        /* Contact: back to the screen */
-        .contact-panel { text-align: left; }
-        .contact-panel h2 { color: #FFFFFF; }
-        .contact-panel p { color: #D9D0EC; max-width: 48ch; }
-        .contact-links { display: flex; flex-wrap: wrap; gap: 0.8rem; margin-top: 1.5rem; }
-
-        footer { text-align: center; color: var(--ink-soft); font-size: 0.9rem; padding: 2.5rem var(--gutter) 3rem; }
+        @media (max-width: 560px) {
+            .site-nav { flex-direction: column; gap: 0.4rem; }
+            .talks li { grid-template-columns: 1fr; gap: 0.2rem; }
+        }
     </style>
 </head>
 <body>
-    <nav class="site-nav" aria-label="Main">
-        <a href="#top" class="wordmark">piezoelectric<span>.</span>ai</a>
-        <ul>
-            <li><a href="#about">About</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#talks">Talks</a></li>
-            <li><a href="#contact">Connect</a></li>
-        </ul>
-    </nav>
-
-    <header id="top" class="hero-outer">
-        <div class="screen">
-            <svg class="neon-mark anim" viewBox="0 0 640 300" role="img" aria-labelledby="mark-title">
-                <title id="mark-title">piezoelectric.ai</title>
-                <defs>
-                    <filter id="bloom" x="-30%" y="-30%" width="160%" height="160%">
-                        <feGaussianBlur stdDeviation="7"/>
-                    </filter>
-                    <filter id="bloom-tight" x="-50%" y="-50%" width="200%" height="200%">
-                        <feGaussianBlur in="SourceGraphic" stdDeviation="2.2" result="b"/>
-                        <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
-                    </filter>
-                    <filter id="violet-bloom" x="-20%" y="-60%" width="140%" height="220%">
-                        <feGaussianBlur in="SourceAlpha" stdDeviation="6" result="a"/>
-                        <feFlood flood-color="#9B7BFF" flood-opacity="0.95"/>
-                        <feComposite in2="a" operator="in" result="glow"/>
-                        <feGaussianBlur in="SourceAlpha" stdDeviation="1.6" result="a2"/>
-                        <feFlood flood-color="#C4B0FF"/>
-                        <feComposite in2="a2" operator="in" result="glow2"/>
-                        <feMerge><feMergeNode in="glow"/><feMergeNode in="glow2"/><feMergeNode in="SourceGraphic"/></feMerge>
-                    </filter>
-                <!-- Broken quartz-crystal tube. Hand-bent: corners are softened and a touch uneven. The gap sits top-right, where the spark jumps. -->
-                <path id="tube" fill="none" d="M 478 44 Q 486 42 491 50 L 562 142 Q 568 151 562 159 L 489 252 Q 484 259 475 259 L 166 257 Q 157 257 152 250 L 79 156 Q 73 148 79 140 L 150 49 Q 155 42 164 42 L 432 43"/>
-                </defs>
-                <use href="#tube" class="tube-glow"/>
-                <use href="#tube" class="tube-mid"/>
-                <use href="#tube" class="tube-core"/>
-                <polyline class="spark-bolt" points="436,43 447,33 452,51 462,38 474,45"/>
-                <text class="letters" x="318" y="166" text-anchor="middle" font-size="64">piezoelectric</text>
-                <text class="letters-ai" x="318" y="214" text-anchor="middle" font-size="26">.ai</text>
-            </svg>
-
+    <header class="night grain">
+        <nav class="site-nav wrap" aria-label="Main">
+            <a class="brand" href="#top">Piezoelectric</a>
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#work">Work</a></li>
+                <li><a href="#talks">Talks</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+        <div id="top" class="hero wrap">
             <div class="hero-copy">
                 <h1>Healthcare AI, built with care.</h1>
-                <p>I'm Jason Trickovic — family physician, assistant professor, and healthcare AI builder. I study AI in clinical care, help implement it, teach it, and build tools of my own.</p>
-                <p>Through Piezoelectric, I help health organizations and educators adopt AI with evidence, privacy and safety built in.</p>
-                <div class="hero-actions">
-                    <a href="#projects" class="btn btn-primary">See what I've built</a>
-                    <a href="#contact" class="btn btn-ghost">Work with me</a>
+                <p class="lede">I'm Jason Trickovic, a family physician and assistant professor at the University of Ottawa. Through Piezoelectric, I help health organizations and educators adopt AI with evidence, privacy and safety built in.</p>
+                <div class="actions">
+                    <a class="btn btn-p" href="#contact">Work with me</a>
+                    <a class="btn btn-s" href="#work">See the work</a>
                 </div>
+            </div>
+            <div class="portrait">
+                <svg class="living" viewBox="0 0 720 851" role="img" aria-label="Illustrated portrait of Jason Trickovic among leaves, books and stars">
+      <defs>
+        <!-- Brushstroke shimmer: low-frequency noise nudges pixels a few px, drifting slowly -->
+        <filter id="shimmer" x="-2%" y="-2%" width="104%" height="104%">
+          <feTurbulence type="fractalNoise" baseFrequency="0.011 0.016" numOctaves="2" seed="7" result="n">
+            <animate attributeName="baseFrequency" dur="14s" values="0.011 0.016;0.014 0.012;0.011 0.016" repeatCount="indefinite"/>
+          </feTurbulence>
+          <feDisplacementMap in="SourceGraphic" in2="n" scale="7" xChannelSelector="R" yChannelSelector="G"/>
+        </filter>
+        <!-- Keep the person still: the shimmer layer is cut away around face and shoulders -->
+        <filter id="soft"><feGaussianBlur stdDeviation="28"/></filter>
+        <mask id="around-him" maskUnits="userSpaceOnUse" x="0" y="0" width="720" height="851">
+          <rect width="720" height="851" fill="#fff"/>
+          <ellipse cx="362" cy="395" rx="228" ry="320" fill="#000" filter="url(#soft)"/>
+        </mask>
+        <!-- Plant sway: broad, slow, mostly horizontal; noise varies by height so neighbouring stems move out of step -->
+        <filter id="sway" x="-3%" y="-1%" width="106%" height="102%">
+          <feTurbulence type="fractalNoise" baseFrequency="0.004 0.022" numOctaves="1" seed="3" result="n">
+            <animate attributeName="baseFrequency" dur="11s" values="0.004 0.022;0.006 0.018;0.004 0.022" repeatCount="indefinite"/>
+          </feTurbulence>
+          <feComponentTransfer in="n" result="h"><feFuncG type="linear" slope="0" intercept="0.5"/></feComponentTransfer>
+          <feDisplacementMap in="SourceGraphic" in2="h" xChannelSelector="R" yChannelSelector="G" scale="0">
+            <animate attributeName="scale" dur="6s" values="-15;15;-15" keyTimes="0;.5;1" calcMode="spline" keySplines=".45 0 .55 1;.45 0 .55 1" repeatCount="indefinite"/>
+          </feDisplacementMap>
+        </filter>
+        <filter id="soft-plants"><feGaussianBlur stdDeviation="22"/></filter>
+        <mask id="plants" maskUnits="userSpaceOnUse" x="0" y="0" width="720" height="851">
+          <g filter="url(#soft-plants)">
+            <rect x="0" y="500" width="720" height="351" fill="#fff"/>
+            <rect x="0" y="230" width="150" height="621" fill="#fff"/>
+            <rect x="575" y="170" width="145" height="681" fill="#fff"/>
+            <ellipse cx="362" cy="285" rx="175" ry="235" fill="#000"/>
+          </g>
+        </mask>
+        <!-- Page flutter: quick, small, mostly vertical ripple on each open book -->
+        <filter id="flutterA" x="-5%" y="-5%" width="110%" height="110%">
+          <feTurbulence type="turbulence" baseFrequency="0.035 0.06" numOctaves="1" seed="65" result="n"/>
+          <feComponentTransfer in="n" result="v"><feFuncR type="linear" slope="0.35" intercept="0.325"/></feComponentTransfer>
+          <feDisplacementMap in="SourceGraphic" in2="v" xChannelSelector="R" yChannelSelector="G" scale="0">
+            <animate attributeName="scale" dur="1.9s" begin="0s" values="0;6;-3;5;0" keyTimes="0;.25;.5;.75;1" repeatCount="indefinite"/>
+          </feDisplacementMap>
+        </filter>
+        <mask id="bookA" maskUnits="userSpaceOnUse" x="0" y="0" width="720" height="851"><ellipse cx="85" cy="95" rx="78" ry="60" fill="#fff" filter="url(#soft-book)"/></mask>
+        <filter id="flutterB" x="-5%" y="-5%" width="110%" height="110%">
+          <feTurbulence type="turbulence" baseFrequency="0.035 0.06" numOctaves="1" seed="66" result="n"/>
+          <feComponentTransfer in="n" result="v"><feFuncR type="linear" slope="0.35" intercept="0.325"/></feComponentTransfer>
+          <feDisplacementMap in="SourceGraphic" in2="v" xChannelSelector="R" yChannelSelector="G" scale="0">
+            <animate attributeName="scale" dur="2.3s" begin="0.7s" values="0;6;-3;5;0" keyTimes="0;.25;.5;.75;1" repeatCount="indefinite"/>
+          </feDisplacementMap>
+        </filter>
+        <mask id="bookB" maskUnits="userSpaceOnUse" x="0" y="0" width="720" height="851"><ellipse cx="155" cy="12" rx="90" ry="34" fill="#fff" filter="url(#soft-book)"/></mask>
+        <filter id="flutterC" x="-5%" y="-5%" width="110%" height="110%">
+          <feTurbulence type="turbulence" baseFrequency="0.035 0.06" numOctaves="1" seed="67" result="n"/>
+          <feComponentTransfer in="n" result="v"><feFuncR type="linear" slope="0.35" intercept="0.325"/></feComponentTransfer>
+          <feDisplacementMap in="SourceGraphic" in2="v" xChannelSelector="R" yChannelSelector="G" scale="0">
+            <animate attributeName="scale" dur="2.1s" begin="1.3s" values="0;6;-3;5;0" keyTimes="0;.25;.5;.75;1" repeatCount="indefinite"/>
+          </feDisplacementMap>
+        </filter>
+        <mask id="bookC" maskUnits="userSpaceOnUse" x="0" y="0" width="720" height="851"><ellipse cx="305" cy="48" rx="78" ry="56" fill="#fff" filter="url(#soft-book)"/></mask>
+        <filter id="soft-book"><feGaussianBlur stdDeviation="6"/></filter>
+        <radialGradient id="moonglow"><stop offset="0" stop-color="#FFC979" stop-opacity=".55"/><stop offset=".45" stop-color="#ED9F41" stop-opacity=".22"/><stop offset="1" stop-color="#ED9F41" stop-opacity="0"/></radialGradient>
+        <radialGradient id="twinkle"><stop offset="0" stop-color="#FFE3B0"/><stop offset="1" stop-color="#FFE3B0" stop-opacity="0"/></radialGradient>
+      </defs>
+      <image id="art" href="files/portrait.webp" width="720" height="851"/>
+      <use href="#art" filter="url(#shimmer)" mask="url(#around-him)"/>
+      <use href="#art" filter="url(#sway)" mask="url(#plants)"/>
+      <use href="#art" filter="url(#flutterA)" mask="url(#bookA)"/>
+      <use href="#art" filter="url(#flutterB)" mask="url(#bookB)"/>
+      <use href="#art" filter="url(#flutterC)" mask="url(#bookC)"/>
+      <circle cx="569" cy="105" r="78" fill="url(#moonglow)">
+        <animate attributeName="opacity" dur="7s" values=".55;1;.55" repeatCount="indefinite"/>
+        <animate attributeName="r" dur="7s" values="74;84;74" repeatCount="indefinite"/>
+      </circle>
+      <g fill="url(#twinkle)">
+        <circle cx="647" cy="12" r="5"><animate attributeName="opacity" dur="3.4s" begin="2.2s" values="0;.95;0" repeatCount="indefinite"/></circle>
+        <circle cx="643" cy="42" r="6"><animate attributeName="opacity" dur="3.0s" begin="0.2s" values="0;.95;0" repeatCount="indefinite"/></circle>
+        <circle cx="481" cy="43" r="6"><animate attributeName="opacity" dur="4.0s" begin="0.9s" values="0;.95;0" repeatCount="indefinite"/></circle>
+        <circle cx="656" cy="80" r="5"><animate attributeName="opacity" dur="3.2s" begin="1.6s" values="0;.95;0" repeatCount="indefinite"/></circle>
+        <circle cx="659" cy="111" r="6"><animate attributeName="opacity" dur="4.6s" begin="2.5s" values="0;.95;0" repeatCount="indefinite"/></circle>
+        <circle cx="514" cy="84" r="6"><animate attributeName="opacity" dur="3.2s" begin="2.8s" values="0;.95;0" repeatCount="indefinite"/></circle>
+        <circle cx="530" cy="177" r="7"><animate attributeName="opacity" dur="4.7s" begin="2.4s" values="0;.95;0" repeatCount="indefinite"/></circle>
+        <circle cx="575" cy="180" r="5"><animate attributeName="opacity" dur="3.0s" begin="0.9s" values="0;.95;0" repeatCount="indefinite"/></circle>
+        <circle cx="620" cy="133" r="7"><animate attributeName="opacity" dur="5.1s" begin="2.5s" values="0;.95;0" repeatCount="indefinite"/></circle>
+        <circle cx="685" cy="175" r="6"><animate attributeName="opacity" dur="2.8s" begin="1.8s" values="0;.95;0" repeatCount="indefinite"/></circle>
+        <circle cx="535" cy="161" r="7"><animate attributeName="opacity" dur="3.6s" begin="0.7s" values="0;.95;0" repeatCount="indefinite"/></circle>
+      </g>
+      <g transform="translate(452 71)"><path d="M0,-1 C.14,-.22 .22,-.14 1,0 C.22,.14 .14,.22 0,1 C-.14,.22 -.22,.14 -1,0 C-.22,-.14 -.14,-.22 0,-1Z" fill="#FFE1A6" opacity="0">
+        <animate attributeName="opacity" dur="3.4s" begin="0s" values="0;.9;0" repeatCount="indefinite"/>
+        <animateTransform attributeName="transform" type="scale" dur="3.4s" begin="0s" values="11;24;11" repeatCount="indefinite"/>
+        <animateTransform attributeName="transform" type="rotate" dur="3.4s" begin="0s" values="0;12;0" additive="sum" repeatCount="indefinite"/>
+      </path></g>
+      <g transform="translate(496 265)"><path d="M0,-1 C.14,-.22 .22,-.14 1,0 C.22,.14 .14,.22 0,1 C-.14,.22 -.22,.14 -1,0 C-.22,-.14 -.14,-.22 0,-1Z" fill="#FFE1A6" opacity="0">
+        <animate attributeName="opacity" dur="4.1s" begin="1.6s" values="0;.9;0" repeatCount="indefinite"/>
+        <animateTransform attributeName="transform" type="scale" dur="4.1s" begin="1.6s" values="10;20;10" repeatCount="indefinite"/>
+        <animateTransform attributeName="transform" type="rotate" dur="4.1s" begin="1.6s" values="0;12;0" additive="sum" repeatCount="indefinite"/>
+      </path></g>
+    </svg>
             </div>
         </div>
     </header>
 
     <main>
-        <section id="about">
+        <section id="about" class="section">
             <div class="wrap about-grid">
                 <div class="about-text">
-                    <h2>The work, plainly stated.</h2>
+                    <h2>The work, plainly stated</h2>
                     <p>I practise family medicine in Ottawa, teach in the University of Ottawa Department of Family Medicine, and precept residents. That's the clinical half.</p>
                     <p>The other half is AI: research, implementation, teaching, and building. Piezoelectric is where that work comes together — advisory work, workshops and talks for health organizations and educators.</p>
                 </div>
@@ -280,36 +275,36 @@
             </div>
         </section>
 
-        <section id="projects" class="projects">
+        <section id="work" class="section work">
             <div class="wrap">
                 <h2>Research, implementation, innovation</h2>
-                <div class="bench">
-                    <article class="card">
-                        <div class="card-meta"><span class="chip">Research</span><span class="chip chip-status">Active</span></div>
+                <div class="work-list">
+                    <article class="item">
+                        <span class="kind">Research <span class="status">— active</span></span>
                         <h3>AI-CARE Study</h3>
                         <p>A randomized, double-blind, crossover, non-inferiority controlled trial where primary care providers and patients compare human- and AI-generated digital health messages. Protocol accepted at BMJ Open.</p>
                         <a href="https://www.medrxiv.org/content/10.64898/2025.12.19.25341381v1" target="_blank" rel="noopener">View protocol</a>
                     </article>
-                    <article class="card">
-                        <div class="card-meta"><span class="chip">Implementation</span><span class="chip chip-status">Shipped</span></div>
+                    <article class="item">
+                        <span class="kind">Implementation <span class="status">— shipped</span></span>
                         <h3>DAX Copilot Rollout</h3>
                         <p>Family Medicine Clinical Lead for ambient AI scribe deployment at The Ottawa Hospital. Part of a broader institutional rollout — representing FM physicians on the ground. Microsoft published the case study.</p>
                         <a href="https://www.microsoft.com/en/customers/story/25270-the-ottawa-hospital-microsoft-365" target="_blank" rel="noopener">Read the case study</a>
                     </article>
-                    <article class="card">
-                        <div class="card-meta"><span class="chip">Education</span><span class="chip chip-status">Live</span></div>
+                    <article class="item">
+                        <span class="kind">Education <span class="status">— live</span></span>
                         <h3>AI Literacy Program</h3>
                         <p>Structured curriculum for residents and faculty: fundamentals, ethics, clinical application, teaching AI. Four modules. Currently being implemented within the department.</p>
                         <a href="/files/AI_Literacy_Program_Overview.pdf" target="_blank" rel="noopener">Download overview</a>
                     </article>
-                    <article class="card">
-                        <div class="card-meta"><span class="chip">Education</span><span class="chip chip-status">Prototype, open to collaborators</span></div>
+                    <article class="item">
+                        <span class="kind">Education <span class="status">— prototype, open to collaborators</span></span>
                         <h3>FieldQuote</h3>
                         <p>Preceptors give feedback out loud all day, and most of it never makes it into a field note. FieldQuote records the post-encounter debrief and drafts structured field notes for the resident to review and the preceptor to sign off. It's built around the resident: the aim is to surface their learning needs across a shift and a rotation, then answer each one with targeted learning material in the way they learn best. If you're an educator or a learner tired of writing field notes, I'd like to hear from you.</p>
                         <a href="#contact">Get in touch</a>
                     </article>
-                    <article class="card">
-                        <div class="card-meta"><span class="chip">Innovation</span><span class="chip chip-status">In discovery</span></div>
+                    <article class="item">
+                        <span class="kind">Innovation <span class="status">— in discovery</span></span>
                         <h3>Dovetail (working name)</h3>
                         <p>A companion for older adults and their families that turns each doctor's visit into a clear summary and next steps. In customer discovery: I'm talking with families who help an aging parent manage their care. If that's you, I'd value 20 minutes of your experience.</p>
                         <a href="#contact">Share your experience</a>
@@ -318,76 +313,56 @@
             </div>
         </section>
 
-        <section id="talks">
+        <section id="talks" class="section">
             <div class="wrap">
-                <h2>Talks on AI in medicine for clinicians, residents and researchers.</h2>
+                <h2>Talks on AI in medicine for clinicians, residents and researchers</h2>
                 <ol class="talks" reversed>
-                    <li><div class="talk-date">Nov 2026<em>Upcoming</em></div><div><h3>AI Literacy Workshop for Program Directors and Administrators</h3><p>Postgraduate Medical Education Faculty Development Day, University of Ottawa</p></div></li>
-                    <li><div class="talk-date">May 2026</div><div><h3>"Five More Ways Artificial Intelligence Can Improve Non-Clinical and Educational Settings"</h3><p>75th Annual Refresher Course for Family Physicians, Ottawa Convention Centre</p></div></li>
-                    <li><div class="talk-date">May 2026</div><div><h3>"AI in Medicine: Benefits, Pitfalls, and Impacts on Physician Health"</h3><p>TOH Family Medicine Workshop, The Ottawa Hospital</p></div></li>
-                    <li><div class="talk-date">Oct 2025</div><div><h3>"AI Literacy Program" — Lightning Talk</h3><p>Ottawa Symposium for AI in Health Research</p></div></li>
-                    <li><div class="talk-date">Oct 2025</div><div><h3>Panel Speaker — "AI Advancements in Healthcare"</h3><p>Department of Family Medicine Assembly, University of Ottawa</p></div></li>
-                    <li><div class="talk-date">Apr 2025</div><div><h3>"Artificial Intelligence in your Office: Should I worry?"</h3><p>74th Annual Refresher Course for Family Physicians, Ottawa</p></div></li>
+                    <li><div class="when">Nov 2026<small>Upcoming</small></div><div><h3>AI Literacy Workshop for Program Directors and Administrators</h3><p>Postgraduate Medical Education Faculty Development Day, University of Ottawa</p></div></li>
+                    <li><div class="when">May 2026</div><div><h3>"Five More Ways Artificial Intelligence Can Improve Non-Clinical and Educational Settings"</h3><p>75th Annual Refresher Course for Family Physicians, Ottawa Convention Centre</p></div></li>
+                    <li><div class="when">May 2026</div><div><h3>"AI in Medicine: Benefits, Pitfalls, and Impacts on Physician Health"</h3><p>TOH Family Medicine Workshop, The Ottawa Hospital</p></div></li>
+                    <li><div class="when">Oct 2025</div><div><h3>"AI Literacy Program" — Lightning Talk</h3><p>Ottawa Symposium for AI in Health Research</p></div></li>
+                    <li><div class="when">Oct 2025</div><div><h3>Panel Speaker — "AI Advancements in Healthcare"</h3><p>Department of Family Medicine Assembly, University of Ottawa</p></div></li>
+                    <li><div class="when">Apr 2025</div><div><h3>"Artificial Intelligence in your Office: Should I worry?"</h3><p>74th Annual Refresher Course for Family Physicians, Ottawa</p></div></li>
                 </ol>
             </div>
         </section>
 
-        <section id="concept" class="projects">
-            <div class="wrap concept-grid">
-                <div>
-                    <h2>Why "Piezoelectric"?</h2>
-                    <p class="concept-quote">"Piezoelectric materials convert mechanical pressure into electrical power. Healthcare is under immense pressure. The question is whether we can transform that pressure into intelligent power that actually helps."</p>
-                    <p class="plain">This site is about that conversion. Taking the pressures of modern medicine — burnout, access barriers, information overload, admin burden — and building AI that does something useful about them. Not hype. Not promises. Real work, carefully studied, honestly shared.</p>
-                </div>
-                <!-- A small workbench contraption: a clamp squeezes a quartz crystal; a wire carries the spark to a bulb -->
-                <svg class="contraption" viewBox="0 0 420 320" role="img" aria-label="Drawing of a clamp squeezing a crystal, wired to a glowing light bulb">
-                    <!-- bench -->
-                    <path class="line" d="M 18 276 Q 210 270 402 278"/>
-                    <!-- clamp frame -->
-                    <path class="line" d="M 70 270 L 70 92 Q 70 70 92 70 L 168 70 Q 182 70 182 84 L 182 100"/>
-                    <!-- screw + handle -->
-                    <path class="line" d="M 182 100 L 182 128"/>
-                    <path class="line" d="M 160 100 L 204 100"/>
-                    <path class="line" d="M 168 128 L 196 128 L 192 140 L 172 140 Z"/>
-                    <!-- crystal being squeezed (hexagonal prism) -->
-                    <path class="crystal" d="M 182 142 L 204 160 L 204 232 L 182 252 L 160 232 L 160 160 Z"/>
-                    <path class="line" d="M 160 160 L 182 176 L 204 160 M 182 176 L 182 252" style="stroke: var(--violet); stroke-width: 2"/>
-                    <!-- jaw below -->
-                    <path class="line" d="M 150 256 L 214 256 L 214 270"/>
-                    <!-- wire to bulb, a little loopy -->
-                    <path class="line" d="M 204 200 C 240 200 236 150 262 160 C 290 170 270 228 300 222 C 318 218 318 196 320 184" style="stroke-width: 2.5"/>
-                    <!-- bulb -->
-                    <circle class="glow" cx="322" cy="128" r="58"/>
-                    <path class="line fill-paper" d="M 302 186 L 342 186 L 340 168 Q 362 150 360 124 Q 356 92 322 90 Q 288 92 284 124 Q 282 150 304 168 Z"/>
-                    <path class="line" d="M 306 196 L 338 196 M 309 206 L 335 206"/>
-                    <path class="bolt" d="M 314 112 L 328 128 L 316 134 L 332 152"/>
-                    <!-- little sparks of pressure -->
-                    <path class="bolt" d="M 128 176 L 142 182 M 124 204 L 142 204 M 128 232 L 142 226"/>
-                </svg>
+        <section class="section name">
+            <div class="wrap">
+                <h2>Why "Piezoelectric"?</h2>
+                <blockquote>"Piezoelectric materials convert mechanical pressure into electrical power. Healthcare is under immense pressure. The question is whether we can transform that pressure into intelligent power that actually helps."</blockquote>
+                <p>This site is about that conversion. Taking the pressures of modern medicine — burnout, access barriers, information overload, admin burden — and building AI that does something useful about them. Not hype. Not promises. Real work, carefully studied, honestly shared.</p>
             </div>
         </section>
 
-        <section id="contact" class="hero-outer">
-            <div class="screen contact-panel">
-                <div class="wrap" style="padding:0">
-                    <h2>Let's connect</h2>
-                    <p>I'm always open to conversations about AI in healthcare, implementation, research, and speaking opportunities.</p>
-                    <div class="contact-links">
-                        <a href="mailto:jason@piezoelectric.ai" class="btn btn-primary">Email me</a>
-                        <a href="https://www.linkedin.com/in/jasontrickovic/" class="btn btn-ghost" target="_blank" rel="noopener">LinkedIn</a>
-                        <a href="https://github.com/jtrick30" class="btn btn-ghost" target="_blank" rel="noopener">GitHub</a>
-                    </div>
+        <section id="contact" class="night grain contact">
+            <div class="wrap" style="position:relative; z-index:1">
+                <h2>Let's connect</h2>
+                <p>I'm always open to conversations about AI in healthcare, implementation, research, and speaking opportunities.</p>
+                <div class="actions">
+                    <a class="btn btn-p" href="mailto:jason@piezoelectric.ai">Email me</a>
+                    <a class="btn btn-s" href="https://www.linkedin.com/in/jasontrickovic/" target="_blank" rel="noopener">LinkedIn</a>
+                    <a class="btn btn-s" href="https://github.com/jtrick30" target="_blank" rel="noopener">GitHub</a>
                 </div>
             </div>
         </section>
     </main>
 
-    <footer>© 2026 Jason Trickovic, MD</footer>
+    <footer>
+        <div class="wrap">
+            <span>© 2026 Jason Trickovic, MD</span>
+            <span class="credit">Portrait illustration created with Perplexity</span>
+        </div>
+    </footer>
 
     <script>
-        // After the intro plays once, leave the spark gently humming.
-        const mark = document.querySelector('.neon-mark');
-        if (mark) setTimeout(() => mark.classList.add('lit'), 3000);
-    </script>
+  // Motion is ambient only: pause for reduced-motion users and whenever the portrait is off screen.
+  (function(){var svg=document.querySelector('svg.living'); if(!svg) return;
+    var mq=window.matchMedia('(prefers-reduced-motion: reduce)'), visible=true;
+    function apply(){ (mq.matches||!visible) ? svg.pauseAnimations() : svg.unpauseAnimations(); }
+    if('IntersectionObserver' in window){ new IntersectionObserver(function(e){visible=e[0].isIntersecting;apply();}).observe(svg); }
+    mq.addEventListener ? mq.addEventListener('change',apply) : mq.addListener(apply); apply();
+  })();
+</script>
 </body>
 </html>
