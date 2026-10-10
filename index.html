@@ -488,6 +488,13 @@
             margin: 0 auto;
         }
 
+        .hero-cta-secondary {
+            background: transparent !important;
+            color: inherit !important;
+            border: 1.5px solid currentColor;
+            margin-left: 0.75rem;
+        }
+
         .project-card {
             background: var(--color-bg-warm);
             padding: 2.5rem;
@@ -1007,7 +1014,7 @@
             <li><a href="#about">About</a></li>
             <li><a href="#projects">Projects</a></li>
             <li><a href="#speaking">Talks</a></li>
-            <li><a href="#writing">Writing</a></li>
+            <!-- <li><a href="#writing">Writing</a></li> (hidden until first post) -->
             <li><a href="#contact">Connect</a></li>
         </ul>
     </nav>
@@ -1016,16 +1023,18 @@
     <section class="hero">
         <div class="hero-content">
             <p class="hero-eyebrow">Physician · Builder · Healthcare AI</p>
-            <h1>I don't talk about healthcare AI. I <span class="accent">build it.</span></h1>
+            <h1>Healthcare AI, built with <span class="accent">care.</span></h1>
             <p class="hero-description">
-                I'm Jason Trickovic — full-time family physician, assistant professor, and healthcare AI builder. I'm co-investigator on a CIHR-funded randomized controlled trial on AI-generated patient education. I was the Family Medicine Clinical Lead for the DAX Copilot rollout at The Ottawa Hospital. I'm building an AI literacy curriculum for residents and faculty. And I'm prototyping tools to fix what's broken in medicine — in practice and in training.
+                I'm Jason Trickovic — family physician, assistant professor, and healthcare AI builder. I study AI in clinical care, help implement it, teach it, and build tools of my own.
             </p>
+            <p class="hero-description">Through Piezoelectric, I help health organizations and educators adopt AI with evidence, privacy and safety built in.</p>
             <a href="#projects" class="hero-cta">
                 See what I've built
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
                 </svg>
             </a>
+            <a href="#contact" class="hero-cta hero-cta-secondary">Work with me</a>
         </div>
         
         <!-- Piezoelectric crystal visualization -->
@@ -1047,9 +1056,8 @@
                     <p class="section-eyebrow">About</p>
                     <h2 class="section-title">The work, plainly stated.</h2>
                 </div>
-                <p>I practice full-time family medicine in Ottawa, hold an appointment at the University of Ottawa Department of Family Medicine, and train the next generation of family physicians as a clinical preceptor. That's the clinical half.</p>
-                <p>The other half: I'm co-investigator on a CIHR-funded randomized controlled trial on AI-generated patient education — protocol accepted at BMJ Open. I was Family Medicine Clinical Lead for the DAX Copilot rollout at The Ottawa Hospital, part of a broader implementation team representing FM physicians on the ground. I'm building and implementing an AI literacy curriculum for residents and faculty. And I'm prototyping tools to fix the parts of medicine — in practice and in training — that haven't been touched yet.</p>
-                <p>The piezoelectric effect transforms mechanical pressure into usable electrical energy. That's the metaphor for this work: taking the pressures of modern medicine and turning them into something useful.</p>
+                <p>I practise family medicine in Ottawa, teach in the University of Ottawa Department of Family Medicine, and precept residents. That's the clinical half.</p>
+                <p>The other half is AI: research, implementation, teaching, and building. Piezoelectric is where that work comes together — advisory work, workshops and talks for health organizations and educators.</p>
             </div>
             <div class="about-credentials">
                 <ul class="credentials-list">
@@ -1147,10 +1155,28 @@
                  </a>
             </div>
             <div class="project-card">
+                <span class="project-tag education">Education</span>
+                <div class="speaking-badges"><span class="status-badge prototype">Prototype · Open to collaborators</span></div>
+                <h3>FieldQuote</h3>
+                <p>Preceptors give feedback out loud all day, and most of it never makes it into a field note. FieldQuote records the post-encounter debrief and drafts structured field notes for the resident to review and the preceptor to sign off. It's built around the resident: the aim is to surface their learning needs across a shift and a rotation, then answer each one with targeted learning material in the way they learn best. If you're an educator or a learner tired of writing field notes, I'd like to hear from you.</p>
+                <a href="#contact" class="project-link">
+                   Get in touch
+                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                       <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                   </svg>
+                 </a>
+            </div>
+            <div class="project-card">
                 <span class="project-tag innovation">Innovation</span>
-                <div class="speaking-badges"><span class="status-badge prototype">Prototype</span></div>
-                <h3>Ambient Experiential Clinical Coach</h3>
-                <p>AI tool that turns residency field notes into active coaching — captures reflective conversations, surfaces patterns, delivers micro-learning after clinical sessions. Early prototype.</p>
+                <div class="speaking-badges"><span class="status-badge prototype">In discovery</span></div>
+                <h3>Dovetail (working name)</h3>
+                <p>A companion for older adults and their families that turns each doctor's visit into a clear summary and next steps. In customer discovery: I'm talking with families who help an aging parent manage their care. If that's you, I'd value 20 minutes of your experience.</p>
+                <a href="#contact" class="project-link">
+                    Share your experience
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                    </svg>
+                </a>
             </div>
         </div>
     </section>
@@ -1159,14 +1185,24 @@
     <section id="speaking" class="speaking">
         <div class="section-header" style="max-width: 900px; margin: 0 auto;">
             <p class="section-eyebrow">Invited Talks</p>
-            <h2 class="section-title">I get asked to speak on AI in medicine — to clinicians, residents, and researchers. These are the talks.</h2>
+            <h2 class="section-title">Talks on AI in medicine for clinicians, residents and researchers.</h2>
         </div>
         <div class="speaking-list">
 
             <div class="speaking-item">
                 <div class="speaking-date">
-                    May 2026
+                    Nov 2026
                     <div class="speaking-badges" style="margin-top: 0.4rem;"><span class="status-badge upcoming">Upcoming</span></div>
+                </div>
+                <div class="speaking-content">
+                    <h3>AI Literacy Workshop for Program Directors and Administrators</h3>
+                    <p>Postgraduate Medical Education Faculty Development Day · University of Ottawa</p>
+                </div>
+            </div>
+
+            <div class="speaking-item">
+                <div class="speaking-date">
+                    May 2026
                 </div>
                 <div class="speaking-content">
                     <h3>"Five More Ways Artificial Intelligence Can Improve Non-Clinical and Educational Settings"</h3>
@@ -1177,7 +1213,6 @@
             <div class="speaking-item">
                 <div class="speaking-date">
                     May 2026
-                    <div class="speaking-badges" style="margin-top: 0.4rem;"><span class="status-badge upcoming">Upcoming</span></div>
                 </div>
                 <div class="speaking-content">
                     <h3>"AI in Medicine: Benefits, Pitfalls, and Impacts on Physician Health"</h3>
@@ -1213,7 +1248,7 @@
     </section>
 
     <!-- Writing Section -->
-    <section id="writing" class="writing">
+    <section id="writing" class="writing" hidden>
         <div class="section-header" style="max-width: 800px; margin: 0 auto;">
             <p class="section-eyebrow">Writing</p>
             <h2 class="section-title">Thinking out loud about AI in medicine.</h2>
@@ -1234,7 +1269,7 @@
             <p class="concept-quote">
                 "Piezoelectric materials convert mechanical <span class="highlight">pressure</span> into electrical <span class="highlight">power</span>. 
                 Healthcare is under immense pressure. The question is whether we can transform 
-                that pressure into intelligence that actually helps."
+                that pressure into <span class="highlight">intelligent power</span> that actually helps."
             </p>
             <p class="concept-explanation">
                 This site is about that conversion. Taking the pressures of modern medicine — 
