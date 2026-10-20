@@ -60,6 +60,7 @@ ul.ticks { margin: 0; padding: 0; list-style: none; display: grid; gap: 10px; }
 ul.ticks li { display: grid; grid-template-columns: 26px 1fr; gap: 8px; align-items: start; }
 ul.ticks li::before { content: ""; width: 18px; height: 18px; margin-top: 5px; border-radius: 50%; background: var(--biscuit); border: 2px solid var(--tea); }
 .status { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 4px; }
+.diff strong { color: var(--tea); }
 .chip { display: inline-flex; align-items: center; gap: 6px; font-size: 15px; font-weight: 700; padding: 3px 10px; border-radius: 999px; border: 2px solid currentColor; background: var(--cream); }
 .chip.done { color: var(--green); } .chip.wait { color: var(--grey); } .chip.stuck { color: var(--attn); }
 ol.steps { margin: 0; padding: 0; list-style: none; display: grid; gap: 14px; counter-reset: s; }
@@ -141,7 +142,11 @@ footer { padding-top: 28px; font-size: 14px; color: var(--grey); display: grid; 
     </section>
     <section class="block">
       <h2>Why it's different</h2>
-      <p>Built by a family physician who sees every week how much depends on what happens after the visit. It starts from what your parent's own doctor said, not general advice. The visit recording is deleted once the notes are made.</p>
+      <ul class="ticks diff">
+        <li><span><strong>We get it done, not just tell you.</strong> Other apps stop at a summary. Tea Biscuit takes you through every call and form in one sitting, in the fastest order, and shows you what's still waiting.</span></li>
+        <li><span><strong>Your data and your choices stay yours.</strong> We never sell your data, and no one pays us to send you to a service. You choose every provider; if your doctor named one, it shows first.</span></li>
+        <li><span><strong>Built by a family physician.</strong> Built by a doctor who knows where plans fall through after the visit, and how to close those gaps.</span></li>
+      </ul>
     </section>
     <section class="block">
       <h2>How it works</h2>
@@ -186,8 +191,12 @@ footer { padding-top: 28px; font-size: 14px; color: var(--grey); display: grid; 
       </div>
     </section>
     <section class="block">
-      <h2>Why this approach</h2>
-      <p>Built by a family physician. It starts from what the doctor actually said and keeps the family doctor at the centre. The family decides together who watches and who acts. Designed for Ontario privacy rules: the visit recording is deleted once notes are made. No one pays us to steer care.</p>
+      <h2>Why it's different</h2>
+      <ul class="ticks diff">
+        <li><span><strong>It gets the plan done, not just written down.</strong> Families finish every call and form in one sitting. Coaches see only the steps that are stuck.</span></li>
+        <li><span><strong>Safe to recommend.</strong> No data sold, no referral fees, no steering. Families choose their own providers, and privacy is designed for Ontario rules.</span></li>
+        <li><span><strong>Built by a family physician.</strong> Built by a doctor who knows where plans fall through between visits, and how to close those gaps.</span></li>
+      </ul>
     </section>
     <section class="block">
       <h2>How a pilot works</h2>

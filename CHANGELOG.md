@@ -5,6 +5,7 @@ Each entry: date · what visitors will see change · approval reference (Notion 
 Rule: every site change ships with a line here, in the same commit or merge.
 
 ## 2026-10-20
+- /teabiscuit/: "Why it's different" rewritten on both pages as three points (gets it done; no data sold or steering; built by a family physician). (Approved by Jason 2026-10-20)
 - New page at /teabiscuit/: Tea Biscuit landing page with a choice between families and organizations, and a one-pager for each. Hidden from search engines (noindex) until name and CPSO checks are done. (Approved by Jason 2026-10-20)
 - Research section: "DoveTail" card renamed "Tea Biscuit (formerly DoveTail)", summary updated, link now goes to /teabiscuit/. (Approved by Jason 2026-10-20)
 
