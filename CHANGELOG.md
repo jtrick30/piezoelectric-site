@@ -4,6 +4,10 @@ One entry per change that goes live. Newest first.
 Each entry: date · what visitors will see change · approval reference (Notion Approvals, task type "Website update").
 Rule: every site change ships with a line here, in the same commit or merge.
 
+## 2026-10-20
+- New page at /teabiscuit/: Tea Biscuit landing page with a choice between families and organizations, and a one-pager for each. Hidden from search engines (noindex) until name and CPSO checks are done. (Approved by Jason 2026-10-20)
+- Research section: "DoveTail" card renamed "Tea Biscuit (formerly DoveTail)", summary updated, link now goes to /teabiscuit/. (Approved by Jason 2026-10-20)
+
 ## 2026-10-19
 - Research section: renamed "Dovetail (working name)" to "DoveTail". Description and link unchanged. (Approved by Jason 2026-10-19)
 - Added this changelog.

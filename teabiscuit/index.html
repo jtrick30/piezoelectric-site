@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="Tea Biscuit turns each doctor visit into a clear plan families can finish. Early prototype.">
+<link rel="icon" href="/files/favicon.svg" type="image/svg+xml">
+<title>Tea Biscuit</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:wght@400;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,700&display=swap">
+<style>
+/* Layout: one calm column; a two-door chooser on Home, then a short one-pager per door. Single light look by choice (brand: dark mode later). */
+:root {
+  --cream: #FBF6EC;
+  --biscuit: #E9CF9F;
+  --biscuit-soft: #F4E6C8;
+  --tea: #3B2A1E;
+  --teal: #1F5C58;
+  --grey: #6B5B4E;
+  --green: #2E6B3A;
+  --attn: #B5462E;
+  --line: #E4D6BC;
+  --display: "Fraunces", Georgia, "Times New Roman", serif;
+  --body: "Atkinson Hyperlegible Next", "Atkinson Hyperlegible", system-ui, -apple-system, "Segoe UI", sans-serif;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; background: var(--cream); color: var(--tea);
+  font-family: var(--body); font-size: 18px; line-height: 1.6;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+.wrap { max-width: 720px; margin: 0 auto; padding-block: 28px 56px; }
+header.bar { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+.brand { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--tea); }
+.brand svg { width: 52px; height: 40px; flex: none; }
+.brand span { font-family: var(--display); font-weight: 700; font-size: 26px; letter-spacing: -0.01em; }
+.back { color: var(--teal); font-weight: 600; text-decoration: none; font-size: 16px; }
+.back:hover { text-decoration: underline; }
+h1, h2 { font-family: var(--display); text-wrap: balance; line-height: 1.15; margin: 0; }
+h1 { font-size: clamp(34px, 7vw, 50px); font-weight: 700; letter-spacing: -0.015em; }
+h2 { font-size: 24px; font-weight: 700; }
+.eyebrow { font-size: 14px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--grey); }
+.lede { font-size: 20px; max-width: 34em; }
+.hero { display: grid; gap: 16px; padding-block: 40px 28px; }
+.doors { display: grid; gap: 14px; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+.door {
+  display: grid; gap: 8px; padding: 22px; border-radius: 14px; text-decoration: none; color: var(--tea);
+  background: var(--biscuit-soft); border: 2px solid var(--biscuit);
+}
+.door:hover, .door:focus-visible { border-color: var(--teal); }
+.door strong { font-family: var(--display); font-size: 22px; line-height: 1.2; }
+.door .go { color: var(--teal); font-weight: 700; }
+.note { font-size: 15px; color: var(--grey); }
+section.block { display: grid; gap: 10px; padding-block: 22px; border-top: 1px solid var(--line); }
+section.block p { margin: 0; max-width: 36em; }
+ul.ticks { margin: 0; padding: 0; list-style: none; display: grid; gap: 10px; }
+ul.ticks li { display: grid; grid-template-columns: 26px 1fr; gap: 8px; align-items: start; }
+ul.ticks li::before { content: ""; width: 18px; height: 18px; margin-top: 5px; border-radius: 50%; background: var(--biscuit); border: 2px solid var(--tea); }
+.status { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 4px; }
+.chip { display: inline-flex; align-items: center; gap: 6px; font-size: 15px; font-weight: 700; padding: 3px 10px; border-radius: 999px; border: 2px solid currentColor; background: var(--cream); }
+.chip.done { color: var(--green); } .chip.wait { color: var(--grey); } .chip.stuck { color: var(--attn); }
+ol.steps { margin: 0; padding: 0; list-style: none; display: grid; gap: 14px; counter-reset: s; }
+ol.steps li { display: grid; grid-template-columns: 40px 1fr; gap: 12px; align-items: start; counter-increment: s; }
+ol.steps li::before {
+  content: counter(s); width: 36px; height: 36px; border-radius: 50%; display: grid; place-items: center;
+  font-family: var(--display); font-weight: 700; background: var(--biscuit); color: var(--tea);
+}
+.cta { display: grid; gap: 12px; padding: 24px; margin-top: 8px; border-radius: 14px; background: var(--tea); color: var(--cream); }
+.cta h2 { color: var(--cream); }
+.cta p { margin: 0; }
+.addr { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+.addr a.email { font-family: var(--body); font-size: 18px; font-weight: 700; background: var(--cream); color: var(--tea); padding: 6px 12px; border-radius: 8px; user-select: all; }
+button.copy {
+  font: inherit; font-size: 16px; font-weight: 700; cursor: pointer; border: 0; border-radius: 8px;
+  padding: 8px 16px; background: var(--teal); color: #fff;
+}
+button.copy:focus-visible, .door:focus-visible, a:focus-visible { outline: 3px solid var(--teal); outline-offset: 3px; }
+footer { padding-top: 28px; font-size: 14px; color: var(--grey); display: grid; gap: 4px; }
+@media (prefers-reduced-motion: no-preference) { .door { transition: border-color .15s; } }
+</style>
+</head>
+<body>
+
+
+<div class="wrap">
+  <header class="bar">
+    <a class="brand" href="#home" aria-label="Tea Biscuit home">
+      <svg id="mark" viewBox="0 0 104 80" aria-hidden="true"></svg>
+      <span>Tea Biscuit</span>
+    </a>
+    <a class="back" href="#home" id="backlink" hidden>← Start over</a>
+  </header>
+
+  <!-- HOME -->
+  <main id="v-home">
+    <div class="hero">
+      <h1>Every doctor visit becomes a plan the family can finish.</h1>
+      <p class="lede">Tea Biscuit records the visit with one button, turns it into clear steps with the reason for each, and helps the family get it all done in one sitting.</p>
+      <p class="eyebrow">Which describes you?</p>
+    </div>
+    <div class="doors">
+      <a class="door" href="#families">
+        <strong>I'm helping a parent with their health care</strong>
+        <span>For adult children and families.</span>
+        <span class="go">For families →</span>
+      </a>
+      <a class="door" href="#organizations">
+        <strong>I'm with an organization that supports older adults</strong>
+        <span>For caregiver support organizations and their care coaches.</span>
+        <span class="go">For organizations →</span>
+      </a>
+    </div>
+  </main>
+
+  <!-- FAMILIES (Path A) -->
+  <main id="v-families" hidden>
+    <div class="hero">
+      <p class="eyebrow">For adult children helping an aging parent</p>
+      <h1>Know what the doctor said, and get it done.</h1>
+      <p class="lede">Tea Biscuit turns your parent's doctor visit into a clear plan, with the reason for each step and one sitting to make the calls. Your parent stays in charge.</p>
+    </div>
+    <section class="block">
+      <h2>The visit is the easy part</h2>
+      <p>Afterwards there's a referral to chase, a new prescription, a test to book, and clinics that don't talk to each other. Most families don't have a doctor to ask.</p>
+    </section>
+    <section class="block">
+      <h2>What you get</h2>
+      <ul class="ticks">
+        <li><span>Your parent presses one button at the visit. Nobody has to take notes.</span></li>
+        <li><span>You both get a plan with the reason for each step, in plain words.</span></li>
+        <li><span>One sitting to make every call, with the numbers, scripts and forms ready.</span></li>
+        <li><span>You decide together who watches and who acts.</span></li>
+        <li><span>You can see where each step stands:</span></li>
+      </ul>
+      <div class="status" aria-label="Status examples">
+        <span class="chip done">✓ Done</span><span class="chip wait">◷ Waiting on clinic</span><span class="chip stuck">! Stuck</span>
+      </div>
+    </section>
+    <section class="block">
+      <h2>Why it's different</h2>
+      <p>Built by a family physician who sees every week how much depends on what happens after the visit. It starts from what your parent's own doctor said, not general advice. The visit recording is deleted once the notes are made.</p>
+    </section>
+    <section class="block">
+      <h2>How it works</h2>
+      <ol class="steps">
+        <li><span>Set it up together with your parent, in about 15 minutes.</span></li>
+        <li><span>Press record at the next doctor visit.</span></li>
+        <li><span>Finish the plan in one sitting and see what's done.</span></li>
+      </ol>
+    </section>
+    <section class="block">
+      <h2>Where we are</h2>
+      <p>Tea Biscuit is an early working prototype, tested with sample data only. We're looking for a first group of families to shape it.</p>
+    </section>
+    <div class="cta">
+      <h2>Join the first group of families</h2>
+      <p>Send a short note and we'll set up a 15-minute call.</p>
+      <div class="addr"><a class="email" href="mailto:jason@piezoelectric.ai">jason@piezoelectric.ai</a><button class="copy" type="button">Copy email</button></div>
+    </div>
+  </main>
+
+  <!-- ORGANIZATIONS (Path B) -->
+  <main id="v-organizations" hidden>
+    <div class="hero">
+      <p class="eyebrow">For caregiver support organizations</p>
+      <h1>Reach more families without adding staff.</h1>
+      <p class="lede">Tea Biscuit helps your organization stay with older adults and their families between coach contacts, so they follow the doctor's plan and stay healthy at home.</p>
+    </div>
+    <section class="block">
+      <h2>More families, same team</h2>
+      <p>Ontario's caregivers are expected to grow from 4.2 to 6.5 million by 2030. Between coach contacts, families carry the doctor's plan alone. In Ontario, only about half of patients are seen within a week after an emergency visit, and people with dementia less often. Timely follow-up is linked to lower mortality and fewer admissions.</p>
+    </section>
+    <section class="block">
+      <h2>What Tea Biscuit does</h2>
+      <ul class="ticks">
+        <li><span>One button records the visit, with a spoken notice to the doctor.</span></li>
+        <li><span>The family gets a plan with the reason for each step.</span></li>
+        <li><span>One session where the family makes every call and fills every form.</span></li>
+        <li><span>Everyone sees where each step stands, and your coaches see only the stuck ones:</span></li>
+      </ul>
+      <div class="status" aria-label="Status examples">
+        <span class="chip done">✓ Done</span><span class="chip wait">◷ Waiting on clinic</span><span class="chip stuck">! Stuck</span>
+      </div>
+    </section>
+    <section class="block">
+      <h2>Why this approach</h2>
+      <p>Built by a family physician. It starts from what the doctor actually said and keeps the family doctor at the centre. The family decides together who watches and who acts. Designed for Ontario privacy rules: the visit recording is deleted once notes are made. No one pays us to steer care.</p>
+    </section>
+    <section class="block">
+      <h2>How a pilot works</h2>
+      <ol class="steps">
+        <li><span>A 20-minute call to see if it fits your families and your team.</span></li>
+        <li><span>A fixed-fee pilot with a small group of early-stage families.</span></li>
+        <li><span>A results report: plan steps completed, stuck steps resolved, caregiver confidence, and families supported per coach.</span></li>
+      </ol>
+    </section>
+    <section class="block">
+      <h2>Where we are</h2>
+      <p>A working prototype, tested with sample data only, and Ontario evidence on the follow-up gap. No pilot results yet. Measuring them with you is the point of the pilot.</p>
+    </section>
+    <div class="cta">
+      <h2>Book a 20-minute call</h2>
+      <p>Tell us a little about your organization and the families you support.</p>
+      <div class="addr"><a class="email" href="mailto:jason@piezoelectric.ai">jason@piezoelectric.ai</a><button class="copy" type="button">Copy email</button></div>
+    </div>
+  </main>
+
+  <footer>
+    <span>Tea Biscuit is an early prototype. It is not medical advice and does not replace your doctor.</span>
+    <span>Ottawa, Ontario. A project by <a href="/" style="color:inherit">Jason Trickovic, MD</a>.</span>
+  </footer>
+</div>
+
+<script>
+(function () {
+  // Brand mark: scalloped tea biscuit with docking holes, two white teacups in front.
+  var svg = document.getElementById('mark'), NS = 'http://www.w3.org/2000/svg';
+  function el(t, a) { var e = document.createElementNS(NS, t); for (var k in a) e.setAttribute(k, a[k]); svg.appendChild(e); return e; }
+  var cx = 52, cy = 36, R = 30, n = 16, d = '';
+  for (var i = 0; i <= n; i++) {
+    var a = (i / n) * Math.PI * 2, x = cx + R * Math.cos(a), y = cy + R * Math.sin(a);
+    if (i === 0) d += 'M' + x.toFixed(2) + ' ' + y.toFixed(2);
+    else d += ' A4.6 4.6 0 0 1 ' + x.toFixed(2) + ' ' + y.toFixed(2);
+  }
+  el('path', { d: d + 'Z', fill: '#E9CF9F', stroke: '#3B2A1E', 'stroke-width': 2.4, 'stroke-linejoin': 'round' });
+  el('circle', { cx: cx, cy: cy, r: 22, fill: 'none', stroke: '#3B2A1E', 'stroke-width': 1.4, opacity: .55 });
+  [[44,28],[52,28],[60,28],[44,40],[52,40],[60,40]].forEach(function (p) { el('circle', { cx: p[0], cy: p[1], r: 1.7, fill: '#3B2A1E' }); });
+  function cup(x, flip) {
+    var s = flip ? -1 : 1;
+    el('path', { d: 'M' + (x - 11) + ' 52 h22 l-3 14 a4 4 0 0 1 -4 3 h-8 a4 4 0 0 1 -4 -3 z', fill: '#fff', stroke: '#3B2A1E', 'stroke-width': 2.2, 'stroke-linejoin': 'round' });
+    el('path', { d: 'M' + (x + s * 10) + ' 55 c' + (s * 7) + ' 0 ' + (s * 7) + ' 9 ' + (s * 0) + ' 9', fill: 'none', stroke: '#3B2A1E', 'stroke-width': 2.2, 'stroke-linecap': 'round' });
+    el('path', { d: 'M' + (x - 15) + ' 71 h30', stroke: '#3B2A1E', 'stroke-width': 2.4, 'stroke-linecap': 'round' });
+  }
+  cup(22, true); cup(82, false);
+
+  // Simple three-view router: #home, #families, #organizations
+  var views = ['home', 'families', 'organizations'];
+  function show() {
+    var h = (location.hash || '').replace('#', '');
+    if (views.indexOf(h) < 0) h = 'home';
+    views.forEach(function (v) { document.getElementById('v-' + v).hidden = v !== h; });
+    document.getElementById('backlink').hidden = h === 'home';
+    window.scrollTo(0, 0);
+  }
+  window.addEventListener('hashchange', show); show();
+
+  // Copy buttons
+  document.querySelectorAll('button.copy').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var t = b.parentNode.querySelector('.email');
+      var txt = t.textContent.trim();
+      function sel() { var r = document.createRange(); r.selectNodeContents(t); var s = getSelection(); s.removeAllRanges(); s.addRange(r); }
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(txt).then(function () { b.textContent = 'Copied'; }, sel);
+      } else sel();
+    });
+  });
+})();
+</script>
+
+</body>
+</html>
