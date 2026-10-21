@@ -123,10 +123,6 @@
         .booking iframe { display: block; width: 100%; height: 640px; border: 0; background: #fff; border-radius: 4px; }
         .booking .note { color: var(--ink-soft); font-size: 0.95rem; margin: 0.75rem 0 0; max-width: none; }
         .booking .note a { color: var(--rust); }
-        .email-line { margin-top: 1rem; display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem; color: #D6E2DA; font-size: 1rem; }
-        .email-line code { font-family: var(--sans); color: var(--parchment); background: rgba(255,255,255,0.08); padding: 0.3rem 0.6rem; border-radius: 3px; user-select: all; }
-        .email-line button { font: inherit; font-size: 0.9rem; font-weight: 600; cursor: pointer; color: var(--parchment); background: transparent; border: 0; box-shadow: inset 0 0 0 1.5px #4E7A72; border-radius: 3px; padding: 0.35rem 0.8rem; }
-        .email-line button:hover { box-shadow: inset 0 0 0 1.5px var(--ochre); }
         .contact button:focus-visible, .contact a:focus-visible { outline: 2px solid var(--ochre); outline-offset: 3px; }
         @media (max-width: 560px) { .booking iframe { height: 720px; } }
         footer { background: var(--night-deep); color: #7E9A93; font-size: 0.85rem; }
@@ -361,7 +357,6 @@
                     <div id="booking-frame"></div>
                     <p class="note">Booking runs on Google Calendar. Please don't include health information in the form. Calendar not showing? <a href="https://calendar.app.google/sGgXUuuDgeAMVLTS7" target="_blank" rel="noopener">Open the booking page in a new tab</a>.</p>
                 </div>
-                <p class="email-line">Or email <code id="email-addr">jason@piezoelectric.ai</code> <button type="button" id="email-copy">Copy</button></p>
             </div>
         </section>
     </main>
@@ -386,16 +381,6 @@
       }
       var open=panel.hidden; panel.hidden=!open; btn.setAttribute('aria-expanded', String(open));
       btn.textContent = open ? 'Hide booking' : 'Book a call';
-    });
-  })();
-  // Copy email: mailto does nothing for visitors without a mail app, so show the address with a Copy button.
-  (function(){
-    var b=document.getElementById('email-copy'), t=document.getElementById('email-addr'); if(!b||!t) return;
-    function sel(){ var r=document.createRange(); r.selectNodeContents(t); var s=getSelection(); s.removeAllRanges(); s.addRange(r); }
-    b.addEventListener('click', function(){
-      if(navigator.clipboard&&navigator.clipboard.writeText){
-        navigator.clipboard.writeText(t.textContent.trim()).then(function(){ b.textContent='Copied'; setTimeout(function(){ b.textContent='Copy'; },2000); }, sel);
-      } else sel();
     });
   })();
   // Motion is ambient only: pause for reduced-motion users and whenever the portrait is off screen.
