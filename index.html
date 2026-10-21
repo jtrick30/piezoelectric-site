@@ -359,7 +359,7 @@
                 </div>
                 <div class="booking" id="booking" hidden>
                     <div id="booking-frame"></div>
-                    <p class="note">Booking runs on Google Calendar. Please don't include health information in the form. Calendar not showing? <a href="https://calendar.app.google/BujkKqph6aEhZMwv8" target="_blank" rel="noopener">Open the booking page in a new tab</a>.</p>
+                    <p class="note">Booking runs on Google Calendar. Please don't include health information in the form. Calendar not showing? <a href="https://calendar.app.google/sGgXUuuDgeAMVLTS7" target="_blank" rel="noopener">Open the booking page in a new tab</a>.</p>
                 </div>
                 <p class="email-line">Or email <code id="email-addr">jason@piezoelectric.ai</code> <button type="button" id="email-copy">Copy</button></p>
             </div>
@@ -376,7 +376,7 @@
     <script>
   // Book a call: the Google Calendar iframe is created only on the first click, so the page makes no third-party requests on load.
   (function(){
-    var BOOKING_URL = 'https://calendar.app.google/BujkKqph6aEhZMwv8';
+    var BOOKING_URL = 'https://calendar.google.com/calendar/appointments/schedules/AcZssZ0-JcPx6aq5dN6Hsxu_TANEjmW9SUUqJjBptcFBgfXQA1HMEHc3mS67yDe83YY1bgJ54VF42W-p?gv=true';
     var btn=document.getElementById('book-toggle'), panel=document.getElementById('booking'), slot=document.getElementById('booking-frame');
     if(!btn||!panel) return;
     btn.addEventListener('click', function(){
