@@ -5,7 +5,7 @@ Each entry: date · what visitors will see change · approval reference (Notion 
 Rule: every site change ships with a line here, in the same commit or merge.
 
 ## 2026-11-12
-- Tea Biscuit card: status now "in production", "(formerly DoveTail)" removed, text updated (website live, waiting list open), and "See Tea Biscuit" links to teabiscuit.ai. (Requested by Jason 2026-11-12)
+- Tea Biscuit card: status now "website live, waiting list open", "(formerly DoveTail)" removed, text updated (website live, waiting list open), and "See Tea Biscuit" links to teabiscuit.ai. (Requested by Jason 2026-11-12)
 - /teabiscuit/ now forwards to teabiscuit.ai. (Requested by Jason 2026-11-12)
 - Talks: the Nov 2026 AI Literacy Workshop is no longer marked "Upcoming". (Requested by Jason 2026-11-12)
 
